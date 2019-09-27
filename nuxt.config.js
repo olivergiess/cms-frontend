@@ -1,7 +1,7 @@
 const colors = require('vuetify/es5/util/colors').default
 
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -21,6 +21,11 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
+  loadingIndicator: {
+    name: 'circle',
+    color: '#fff',
+    background: 'rgb(48, 48, 48)'
+  },
   /*
   ** Global CSS
   */
@@ -30,6 +35,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    './plugins/mixins/validation',
+    './plugins/axios'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -49,16 +56,26 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/api/login', method: 'post', propertyName: 'access_token' },
-          logout: { url: '/api/logout', method: 'post' },
+          login: { url: 'login', method: 'post', propertyName: 'data.access_token' },
+          logout: { url: 'logout', method: 'post' },
+          user: { url: 'user/current', method: 'get', propertyName: 'data' }
         }
       }
     }
   },
 
-  // router: {
-  //   // middleware: ['auth']
-  // },
+  router: {
+    middleware: [
+      'auth',
+      'clearValidationErrors'
+    ]
+  },
+
+  axios: {
+    prefix: '/api/',
+    host: 'cms.api',
+    port: 80
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module

@@ -1,4 +1,4 @@
-# blog-admin
+# blog-frontend
 
 > My praiseworthy Nuxt.js project
 
