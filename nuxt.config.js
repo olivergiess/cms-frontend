@@ -35,8 +35,6 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    './plugins/mixins/validation',
-    './plugins/axios'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -66,15 +64,8 @@ module.exports = {
 
   router: {
     middleware: [
-      'auth',
-      'clearValidationErrors'
+      'auth'
     ]
-  },
-
-  axios: {
-    prefix: '/api/',
-    host: 'cms.api',
-    port: 80
   },
   /*
   ** vuetify module configuration

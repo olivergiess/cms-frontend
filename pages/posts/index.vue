@@ -8,9 +8,11 @@
 </template>
 
 <script>
+  import Post from '@/models/Post'
+
   export default {
     async beforeCreate() {
-        this.$store.dispatch('posts/all', this.$route.params.id);
+        Post.$fetch();
     },
     data: () => ({
       table: {
@@ -18,8 +20,8 @@
               { text: 'Title' },
               { text: 'Publish At' },
           ],
-          posts: {}
+          posts: []
       },
-    })
+    }),
   }
 </script>
