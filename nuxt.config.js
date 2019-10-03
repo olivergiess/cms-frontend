@@ -50,6 +50,10 @@ module.exports = {
     '@nuxtjs/auth'
   ],
 
+  plugins: [
+    '~/plugins/temp.js'
+  ],
+
   auth: {
     strategies: {
       local: {
@@ -62,11 +66,18 @@ module.exports = {
     }
   },
 
+  axios: {
+    prefix: '/api/',
+    host: 'cms.api',
+    port: 80
+  },
+
   router: {
     middleware: [
       'auth'
     ]
   },
+
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
