@@ -1,20 +1,24 @@
 <template>
   <div>
-    {{ posts[this.$route.params.id] }}
+    {{ post }}
   </div>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  import Post from '@/models/Post'
 
   export default {
-      created() {
-          this.$store.dispatch('posts/get', this.$route.params.id);
+      mounted() {
+        Post.$get({
+          params: {
+            id: this.$route.params.id
+          }
+        });
       },
       computed: {
-          ...mapGetters({
-              posts: 'posts/all'
-          })
+        post () {
+          return Post.find(this.$route.params.id)
+        }
       }
   }
 </script>

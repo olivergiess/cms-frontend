@@ -13,9 +13,7 @@
   export default {
     computed: {
       posts() {
-        return Post.query()
-            .withAll()
-            .all();
+        return Post.all();
       }
     },
     mounted() {

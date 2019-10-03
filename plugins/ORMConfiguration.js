@@ -10,7 +10,10 @@ export default ({ app }) => {
     http: {
       axios: app.$axios,
       onResponse(response) {
-        return response.data.data;
+        if(response.data != undefined)
+          return response.data.data;
+
+        return response;
       }
     }
   })

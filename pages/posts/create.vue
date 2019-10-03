@@ -82,11 +82,13 @@
 </template>
 
 <script>
+  import Post from '@/models/Post'
+
   export default {
       methods: {
         submit() {
             if(this.valid) {
-                this.$store.dispatch('posts/save', this.post);
+                Post.$create({ data: this.post });
             }
         }
       },
