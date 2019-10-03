@@ -51,7 +51,7 @@ module.exports = {
   ],
 
   plugins: [
-    '~/plugins/temp.js'
+    '~/plugins/ORMConfiguration.js'
   ],
 
   auth: {

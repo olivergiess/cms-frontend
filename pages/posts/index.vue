@@ -1,7 +1,7 @@
 <template>
   <v-data-table
-    :headers="table.headers"
-    :items="table.posts"
+    :headers="headers"
+    :items="posts"
     :items-per-page="5"
     class="elevation-1"
   ></v-data-table>
@@ -11,17 +11,23 @@
   import Post from '@/models/Post'
 
   export default {
-    async beforeCreate() {
+    computed: {
+      posts() {
+        return Post.query()
+            .withAll()
+            .all();
+      }
+    },
+    mounted() {
         Post.$fetch();
     },
-    data: () => ({
-      table: {
-          headers: [
-              { text: 'Title' },
-              { text: 'Publish At' },
-          ],
-          posts: []
-      },
-    }),
+    data () {
+        return {
+            headers: [
+                { text: 'Title', value: 'title' },
+                { text: 'Publish At', value: 'publish_at' },
+            ]
+        }
+    },
   }
 </script>

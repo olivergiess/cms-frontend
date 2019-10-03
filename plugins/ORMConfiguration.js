@@ -8,7 +8,10 @@ export default ({ app }) => {
   VuexORM.use(VuexORMAxios, {
     database,
     http: {
-      axios: app.$axios
+      axios: app.$axios,
+      onResponse(response) {
+        return response.data.data;
+      }
     }
   })
 
