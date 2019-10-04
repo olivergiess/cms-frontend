@@ -80,11 +80,6 @@ export default {
           title: 'Posts',
           to: '/posts'
         },
-        {
-          icon: 'mdi-notebook',
-          title: 'Temp',
-          to: '/posts/1'
-        }
       ],
       title: 'Blog'
     }

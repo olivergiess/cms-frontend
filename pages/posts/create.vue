@@ -26,6 +26,23 @@
   export default {
       components: {
           PostForm
+      },
+      data: () => {
+          return {
+              valid: null,
+              date_menu: false,
+              post: {
+                  title: '',
+                  body: '',
+                  publish_at: ''
+              }
+          }
+      },
+      methods: {
+          submit() {
+              Post.$create({ data: this.post })
+                  .then(() => { this.$router.push('/posts') });
+          }
       }
   }
 </script>
