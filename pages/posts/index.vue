@@ -15,6 +15,14 @@
         </v-toolbar-title>
 
         <div class="flex-grow-1" />
+
+        <v-btn
+                color="yellow darken-2"
+                class="white--text"
+                @click.prevent="create"
+        >
+          Create
+        </v-btn>
       </v-toolbar>
 
       <loading-bar :loading="loading" />
@@ -69,6 +77,9 @@
       methods: {
           edit(item) {
               this.$router.push('/posts/' + item.$id)
+          },
+          create() {
+              this.$router.push('/posts/create')
           }
       }
     }

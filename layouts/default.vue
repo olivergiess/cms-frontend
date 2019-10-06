@@ -30,22 +30,12 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
       <v-toolbar-title v-text="title" />
+
       <div class="flex-grow-1"></div>
-      <v-btn
-        icon
-        large
-      >
-        <v-avatar
-            size="32px"
-            item
-          >
-            <v-img
-              src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-              alt="Vuetify"
-            ></v-img>
-        </v-avatar>
-      </v-btn>
+
+      <Avatar/>
     </v-app-bar>
 
     <v-content>
@@ -59,33 +49,36 @@
       </v-container>
     </v-content>
 
-    <v-footer
-      app
-    >
+    <v-footer>
       <span>Oliver Giess &copy; 2019</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      drawer: false,
-      items: [
-        {
-          icon: 'mdi-home',
-          title: 'Home',
-          to: '/'
-        },
-        {
-          icon: 'mdi-notebook',
-          title: 'Posts',
-          to: '/posts'
-        },
-      ],
-      title: 'Blog'
+  import Avatar from '~/components/Avatar'
+
+  export default {
+    components: {
+        Avatar,
+    },
+    data () {
+      return {
+        drawer: false,
+        items: [
+          {
+            icon: 'mdi-home',
+            title: 'Home',
+            to: '/'
+          },
+          {
+            icon: 'mdi-notebook',
+            title: 'Posts',
+            to: '/posts'
+          },
+        ],
+        title: 'Blog'
+      }
     }
   }
-}
 </script>

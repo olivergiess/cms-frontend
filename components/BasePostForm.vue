@@ -5,7 +5,7 @@
               class="white--text"
               flat
       >
-        <v-toolbar-title>{{ action }} Post</v-toolbar-title>
+        <v-toolbar-title>{{ prefix }} Post</v-toolbar-title>
         <div class="flex-grow-1"></div>
       </v-toolbar>
 
@@ -88,9 +88,6 @@
                 type: Object,
                 default: () => ( new Post() )
             },
-            action: {
-                type: String,
-            }
         },
         data: () => {
             return {
@@ -116,16 +113,12 @@
 
                 this.loading = true
 
-                Post.$update({
-                  params: {
-                    id: this.post.id
-                  },
-                  data: this.post
-                }).then(() => {
-                    this.$router.push('/posts')
-                }).finally(() => {
-                    this.loading = false
-                })
+                this.action()
+                    .then(() => {
+                      this.$router.push('/posts')
+                    }).finally(() => {
+                      this.loading = false
+                    })
             }
         }
     }
