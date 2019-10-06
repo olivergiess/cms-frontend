@@ -1,7 +1,5 @@
 <template>
-  <v-app
-    light
-  >
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       clipped
@@ -52,7 +50,12 @@
 
     <v-content>
       <v-container>
-        <nuxt />
+        <v-row
+          align="center"
+          justify="center"
+        >
+          <nuxt />
+        </v-row>
       </v-container>
     </v-content>
 

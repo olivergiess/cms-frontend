@@ -1,17 +1,11 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
+  <v-col
+          cols="12"
+          sm="12"
+          md="10"
   >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      Welcome, you're on the landing page.
-    </v-flex>
-  </v-layout>
+    Welcome, you're on the landing page.
+  </v-col>
 </template>
 
 <script>

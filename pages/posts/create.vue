@@ -1,23 +1,11 @@
 <template>
-  <v-content>
-      <v-container
-        class="fill-height"
-        fluid
-      >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col
-            cols="12"
-            sm="10"
-            md="6"
-          >
-            <PostForm />
-          </v-col>
-        </v-row>
-      </v-container>
-  </v-content>
+  <v-col
+    cols="12"
+    sm="10"
+    md="6"
+  >
+    <PostForm :action="'Create'" />
+  </v-col>
 </template>
 
 <script>
