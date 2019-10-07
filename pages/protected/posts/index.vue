@@ -68,18 +68,18 @@
           return {
               loading: true,
               headers: [
-                  {text: 'Title', value: 'title'},
-                  {text: 'Publish At', value: 'publish_at'},
-                  {text: 'Actions', value: 'action', sortable: false},
+                  { text: 'Title', value: 'title' },
+                  { text: 'Publish At', value: 'publish_at' },
+                  { text: 'Actions', value: 'action', sortable: false },
               ]
           }
       },
       methods: {
           edit(item) {
-              this.$router.push('/posts/' + item.$id)
+              this.$router.push('/protected/posts/' + item.$id)
           },
           create() {
-              this.$router.push('/posts/create')
+              this.$router.push('/protected/posts/create')
           }
       }
     }

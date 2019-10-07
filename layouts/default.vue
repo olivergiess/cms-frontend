@@ -69,12 +69,12 @@
           {
             icon: 'mdi-home',
             title: 'Home',
-            to: '/'
+            to: '/protected'
           },
           {
             icon: 'mdi-notebook',
             title: 'Posts',
-            to: '/posts'
+            to: '/protected/posts'
           },
         ],
         title: 'Blog'

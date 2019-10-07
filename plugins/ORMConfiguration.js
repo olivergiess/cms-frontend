@@ -11,9 +11,12 @@ export default ({ app }) => {
       axios: app.$axios,
       onResponse(response) {
         if(response.data != undefined)
-          return response.data.data;
+          return response.data.data
 
-        return response;
+        return response
+      },
+      onUnauthorised(response) {
+          return this.$router.push('/login')
       }
     }
   })

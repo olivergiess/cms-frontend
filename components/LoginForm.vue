@@ -67,7 +67,7 @@
                 this.$auth.login({
                     data: this.form
                 }).then(() => {
-                    this.$router.push('/');
+                    this.$router.push('/protected');
                 }).finally(() => {
                     this.loading = false;
                 })

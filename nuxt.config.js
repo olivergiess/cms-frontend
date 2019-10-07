@@ -51,6 +51,12 @@ module.exports = {
     '@nuxtjs/auth'
   ],
 
+  axios: {
+      prefix: '/api/',
+      host: 'blog-backend.test',
+      port: 80
+  },
+
   auth: {
     strategies: {
       local: {
@@ -61,12 +67,6 @@ module.exports = {
         }
       }
     }
-  },
-
-  axios: {
-    prefix: '/api/',
-    host: 'blog-backend.test',
-    port: 80
   },
 
   router: {
