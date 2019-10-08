@@ -10,5 +10,5 @@ Vue.use(Vuetify)
 
 Vue.use(TiptapVuetifyPlugin, {
   vuetify,
-  iconsGroup: 'md'
+  iconsGroup: 'mdi'
 })

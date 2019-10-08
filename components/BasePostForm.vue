@@ -26,16 +26,11 @@
                   :disabled="loading"
           ></v-text-field>
 
-          <TextEditor/>
-
-          <v-textarea
+          <tiptap-vuetify
+                  class="mt-6 mb-6"
                   v-model="post.body"
-                  :rules="rules.body"
-                  label="Body"
-                  required
-                  auto-grow
-                  :disabled="loading"
-          ></v-textarea>
+                  :extensions="extensions"
+          />
 
           <v-menu
                   v-model="form.date_menu"
@@ -77,14 +72,31 @@
 
 <script>
     import LoadingBar from '~/components/LoadingBar'
-    import TextEditor from '~/components/TextEditor'
+    import {
+        TiptapVuetify,
+        Heading,
+        Bold,
+        Italic,
+        Strike,
+        Underline,
+        Code,
+        Paragraph,
+        BulletList,
+        OrderedList,
+        ListItem,
+        Link,
+        Blockquote,
+        HardBreak,
+        HorizontalRule,
+        History
+    } from 'tiptap-vuetify'
 
     import Post from '@/models/Post'
 
     export default {
         components: {
             LoadingBar,
-            TextEditor
+            TiptapVuetify
         },
         mounted() {
         },
@@ -108,7 +120,28 @@
                   body: [
                     v => !!v || 'Body is required'
                   ]
-                }
+                },
+                extensions: [
+                    History,
+                    Blockquote,
+                    Link,
+                    Underline,
+                    Strike,
+                    Italic,
+                    ListItem,
+                    BulletList,
+                    OrderedList,
+                    [Heading, {
+                        options: {
+                            levels: [1, 2, 3]
+                        }
+                    }],
+                    Bold,
+                    Code,
+                    HorizontalRule,
+                    Paragraph,
+                    HardBreak
+                ]
             }
         },
         methods: {
@@ -120,7 +153,7 @@
 
                 this.action()
                     .then(() => {
-                      this.$router.push('/posts')
+                      this.$router.push('/protected/posts')
                     }).finally(() => {
                       this.loading = false
                     })

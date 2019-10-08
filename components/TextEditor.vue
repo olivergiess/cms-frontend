@@ -1,7 +1,7 @@
 <template>
   <div>
     <tiptap-vuetify
-      v-model="content"
+      v-model="value"
       :extensions="extensions"
     />
   </div>
@@ -28,7 +28,12 @@
     } from 'tiptap-vuetify'
 
     export default {
-        components: {TiptapVuetify},
+        components: {
+            TiptapVuetify
+        },
+        props: {
+          value: String,
+        },
         data: () => ({
             extensions: [
                 History,
@@ -46,7 +51,6 @@
                     }
                 }],
                 Bold,
-                Link,
                 Code,
                 HorizontalRule,
                 Paragraph,
