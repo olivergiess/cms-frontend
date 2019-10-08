@@ -26,6 +26,8 @@
                   :disabled="loading"
           ></v-text-field>
 
+          <TextEditor/>
+
           <v-textarea
                   v-model="post.body"
                   :rules="rules.body"
@@ -75,11 +77,14 @@
 
 <script>
     import LoadingBar from '~/components/LoadingBar'
+    import TextEditor from '~/components/TextEditor'
+
     import Post from '@/models/Post'
 
     export default {
         components: {
             LoadingBar,
+            TextEditor
         },
         mounted() {
         },

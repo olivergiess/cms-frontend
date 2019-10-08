@@ -36,6 +36,7 @@ module.exports = {
   */
   plugins: [
       '~/plugins/ORMConfiguration.js',
+      '~/plugins/tipTapVuetifyConfiguration.js',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -53,7 +54,7 @@ module.exports = {
 
   axios: {
       prefix: '/api/',
-      host: 'blog-backend.test',
+      host: 'cms.api',
       port: 80
   },
 
