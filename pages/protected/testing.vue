@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <TextEditor v-model=""/>
+        <TextEditor/>
     </v-card>
 </template>
 
