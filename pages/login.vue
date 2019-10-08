@@ -9,9 +9,10 @@
           justify="center"
         >
           <v-col
-            cols="12"
+            cols="10"
             sm="8"
-            md="4"
+            md="6"
+            lg="4"
           >
             <LoginForm/>
           </v-col>

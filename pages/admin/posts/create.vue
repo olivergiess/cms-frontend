@@ -4,16 +4,17 @@
     sm="10"
     md="6"
   >
-    <CreatePostForm/>
+    <CreateForm/>
   </v-col>
 </template>
 
 <script>
-  import CreatePostForm from '~/components/CreatePostForm'
+  import CreateForm from '~/components/posts/CreateForm'
 
   export default {
+      layout: 'admin',
       components: {
-          CreatePostForm
+          CreateForm
       }
   }
 </script>

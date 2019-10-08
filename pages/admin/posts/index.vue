@@ -17,11 +17,12 @@
         <div class="flex-grow-1" />
 
         <v-btn
-                color="yellow darken-2"
-                class="white--text"
-                @click.prevent="create"
+          fab
+          small
+          color="primary lighten-1"
+          @click.prevent="create"
         >
-          Create
+          <v-icon>mdi-plus</v-icon>
         </v-btn>
       </v-toolbar>
 
@@ -51,6 +52,7 @@
   import Post from '@/models/Post'
 
     export default {
+      layout: 'admin',
       components: {
         LoadingBar
       },
@@ -76,10 +78,10 @@
       },
       methods: {
           edit(item) {
-              this.$router.push('/protected/posts/' + item.$id)
+              this.$router.push('/admin/posts/' + item.$id)
           },
           create() {
-              this.$router.push('/protected/posts/create')
+              this.$router.push('/admin/posts/create')
           }
       }
     }

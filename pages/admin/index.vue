@@ -24,6 +24,7 @@
 
 <script>
     export default {
+      layout: 'admin',
       computed: {
           name() {
               return this.$auth.user.first_name

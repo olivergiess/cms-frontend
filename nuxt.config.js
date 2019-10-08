@@ -23,8 +23,8 @@ module.exports = {
   loading: { color: '#fff' },
   loadingIndicator: {
     name: 'circle',
-    color: '#fff',
-    background: 'rgb(48, 48, 48)'
+    color: 'rgb(25, 118, 210)',
+    background: '#fff'
   },
   /*
   ** Global CSS

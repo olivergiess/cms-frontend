@@ -1,20 +1,17 @@
 <script>
-    import BasePostForm from './BasePostForm'
+    import Form from './Form'
     import Post from '@/models/Post'
 
     export default {
-        extends: BasePostForm,
+        extends: Form,
         data: () => {
             return {
-                prefix: 'Edit'
+                prefix: 'Create'
             }
         },
         methods: {
             action() {
-                return Post.$update({
-                    params: {
-                        id: this.post.id
-                    },
+                return Post.$create({
                     data: this.post
                 })
             }

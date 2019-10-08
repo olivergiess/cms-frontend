@@ -4,17 +4,18 @@
       sm="10"
       md="6"
     >
-      <EditPostForm :post="post"/>
+      <EditForm :post="post"/>
     </v-col>
 </template>
 
 <script>
-  import EditPostForm from '~/components/EditPostForm'
+  import EditForm from '~/components/posts/EditForm'
   import Post from '@/models/Post'
 
   export default {
+      layout: 'admin',
       components: {
-          EditPostForm
+          EditForm
       },
       mounted() {
           Post.$get({

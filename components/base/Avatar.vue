@@ -9,13 +9,12 @@
             v-slot:activator="{ on }"
         >
             <v-avatar
-                size="32px"
+                color="yellow darken-3"
+                class="white--text"
+                size="36"
                 v-on="on"
             >
-                <v-img
-                    src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-                    alt="Vuetify"
-                ></v-img>
+                {{ initials }}
             </v-avatar>
         </template>
 
@@ -36,6 +35,15 @@
                 items: [
                     { title: 'Log Out' }
                 ]
+            }
+        },
+        computed: {
+            initials() {
+                let user = this.$auth.user
+
+                let initials = user.first_name[0] + user.last_name[0]
+
+                return initials
             }
         },
         methods: {
