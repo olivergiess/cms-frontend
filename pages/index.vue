@@ -1,16 +1,22 @@
 <template>
-    <v-col
-            cols="12"
-            sm="12"
-            md="10"
-    >
-        Hello
-    </v-col>
+  <v-content>
+    <v-container>
+      <v-row
+        align="start"
+        justify="center"
+      >
+        <v-col cols="7">
+          Hello
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-content>
 </template>
 
 <script>
     export default {
-        auth: false,
+        mode: 'ssr',
         layout: 'landing',
+        auth: false,
     }
 </script>

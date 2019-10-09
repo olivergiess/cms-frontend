@@ -35,8 +35,10 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-      '~/plugins/ORMConfiguration.js',
-      '~/plugins/tipTapVuetifyConfiguration.js',
+    '~/plugins/auth.js',
+    '~/plugins/localStorage.js',
+    '~/plugins/vuexOrm.js',
+    '~/plugins/tipTapVuetify.js',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -49,25 +51,12 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
   ],
 
   axios: {
       prefix: '/api/',
       host: 'cms.api',
       port: 80
-  },
-
-  auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: { url: 'login', method: 'post', propertyName: 'data.access_token' },
-          logout: { url: 'logout', method: 'post' },
-          user: { url: 'user/current', method: 'get', propertyName: 'data' }
-        }
-      }
-    }
   },
 
   router: {

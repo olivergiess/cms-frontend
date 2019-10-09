@@ -39,11 +39,7 @@
         },
         computed: {
             initials() {
-                let user = this.$auth.user
-
-                let initials = user.first_name[0] + user.last_name[0]
-
-                return initials
+                return ''
             }
         },
         methods: {

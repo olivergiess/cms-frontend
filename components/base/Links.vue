@@ -9,6 +9,11 @@
                         to: '/admin'
                     },
                     {
+                        icon: 'mdi-rss',
+                        title: 'Blog',
+                        to: '/'
+                    },
+                    {
                         icon: 'mdi-notebook',
                         title: 'Posts',
                         to: '/admin/posts'

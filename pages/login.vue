@@ -11,8 +11,7 @@
           <v-col
             cols="10"
             sm="8"
-            md="6"
-            lg="4"
+            md="4"
           >
             <LoginForm/>
           </v-col>

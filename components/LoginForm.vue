@@ -56,21 +56,23 @@
         data: () => ({
             loading: false,
             form: {
-                email: '',
-                password: ''
+                email: 'test@test.com',
+                password: 'password'
             },
         }),
         methods: {
             login() {
-                this.loading = true;
+                // this.loading = true;
 
-                this.$auth.login({
-                    data: this.form
-                }).then(() => {
-                    this.$router.push('/admin');
-                }).finally(() => {
-                    this.loading = false;
-                })
+                this.$store.dispatch('auth/login', this.form);
+
+                // this.$auth.login({
+                //     data: this.form
+                // }).then(() => {
+                //     this.$router.push('/admin');
+                // }).finally(() => {
+                //     this.loading = false;
+                // })
             }
         }
     }
