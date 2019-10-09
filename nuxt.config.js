@@ -35,7 +35,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/auth.js',
+    '~/plugins/axios.js',
     '~/plugins/localStorage.js',
     '~/plugins/vuexOrm.js',
     '~/plugins/tipTapVuetify.js',
@@ -61,7 +61,6 @@ module.exports = {
 
   router: {
     middleware: [
-      'auth'
     ]
   },
 
