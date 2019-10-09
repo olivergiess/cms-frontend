@@ -30,7 +30,7 @@ export const mutations = {
 
 export const getters = {
   isAuthenticated(state) {
-    return !!state.auth
+    return !!state.auth.access_token
   },
   accessToken(state) {
     return state.auth.access_token
