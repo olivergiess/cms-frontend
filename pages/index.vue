@@ -1,22 +1,33 @@
 <template>
-  <v-content>
-    <v-container>
-      <v-row
-        align="start"
-        justify="center"
+    <v-content>
+      <v-container
+        class="fill-height"
+        fluid
       >
-        <v-col cols="7">
-          Hello
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-content>
+        <v-row
+          align="center"
+          justify="center"
+        >
+          <v-col
+            cols="10"
+            sm="8"
+            md="4"
+          >
+            <LoginForm/>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-content>
 </template>
 
 <script>
-    export default {
-        mode: 'ssr',
-        layout: 'landing',
-        auth: false,
+  import LoginForm from '~/components/LoginForm'
+
+  export default {
+    layout: 'landing',
+    auth: 'guest',
+    components: {
+      LoginForm
     }
+  }
 </script>

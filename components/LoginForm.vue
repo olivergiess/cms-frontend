@@ -53,6 +53,9 @@
         components: {
           LoadingBar
         },
+        mounted() {
+            this.login()
+        },
         data: () => ({
             loading: false,
             form: {
@@ -62,17 +65,15 @@
         }),
         methods: {
             login() {
-                // this.loading = true;
+                this.loading = true;
 
-                this.$store.dispatch('auth/login', this.form);
-
-                // this.$auth.login({
-                //     data: this.form
-                // }).then(() => {
-                //     this.$router.push('/admin');
-                // }).finally(() => {
-                //     this.loading = false;
-                // })
+                this.$auth.login({
+                    data: this.form
+                }).then(() => {
+                    this.$router.push('/admin');
+                }).finally(() => {
+                    this.loading = false;
+                })
             }
         }
     }

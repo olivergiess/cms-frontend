@@ -37,7 +37,6 @@
   import Footer from '~/components/base/Footer'
 
   export default {
-    middleware: 'authorize',
     components: {
         Avatar,
         NavDrawer,

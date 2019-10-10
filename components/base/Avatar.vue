@@ -29,6 +29,8 @@
 </template>
 
 <script>
+  import Post from '@/models/Post'
+
     export default {
         data: () => {
             return {
@@ -38,13 +40,21 @@
             }
         },
         computed: {
+            user() {
+              return this.$auth.user
+            },
             initials() {
-                return ''
+                let initials = this.user.first_name[0] + this.user.last_name[0]
+
+                return initials
             }
         },
         methods: {
             logout() {
                 this.$auth.logout()
+                  .then(() => {
+                      Post.deleteAll()
+                  })
             }
         }
     }

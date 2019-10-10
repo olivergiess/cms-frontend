@@ -11,7 +11,7 @@
                     {
                         icon: 'mdi-rss',
                         title: 'Blog',
-                        to: '/'
+                        to: 'http://google.com'
                     },
                     {
                         icon: 'mdi-notebook',

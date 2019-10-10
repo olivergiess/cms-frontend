@@ -25,8 +25,11 @@
     export default {
         layout: 'admin',
         computed: {
+            user() {
+              return this.$auth.user
+            },
             name() {
-                return ''
+                return this.user.first_name
             }
         }
     }

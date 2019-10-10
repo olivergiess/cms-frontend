@@ -35,8 +35,6 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/axios.js',
-    '~/plugins/localStorage.js',
     '~/plugins/vuexOrm.js',
     '~/plugins/tipTapVuetify.js',
   ],
@@ -51,6 +49,7 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
   ],
 
   axios: {
@@ -59,8 +58,25 @@ module.exports = {
       port: 80
   },
 
+  auth: {
+    redirect: {
+      login: '/',
+      home: '/admin',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'data.access_token' },
+          logout: { url: 'logout', method: 'post' },
+          user: { url: 'user/current', method: 'get', propertyName: 'data' }
+        }
+      }
+    }
+  },
+
   router: {
     middleware: [
+      'auth'
     ]
   },
 
