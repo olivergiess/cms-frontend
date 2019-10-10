@@ -53,14 +53,11 @@
         components: {
           LoadingBar
         },
-        mounted() {
-            this.login()
-        },
         data: () => ({
             loading: false,
             form: {
-                email: 'test@test.com',
-                password: 'password'
+                email: '',
+                password: ''
             },
         }),
         methods: {
