@@ -20,7 +20,6 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
   loadingIndicator: {
     name: 'circle',
     color: 'rgb(25, 118, 210)',
@@ -54,7 +53,7 @@ module.exports = {
 
   axios: {
       prefix: '/api/',
-      host: 'cms.api',
+      host: 'blog-backend.test',
       port: 80
   },
 

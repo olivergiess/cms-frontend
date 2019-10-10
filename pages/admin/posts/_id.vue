@@ -2,7 +2,7 @@
     <v-col
       cols="12"
       sm="10"
-      md="6"
+      md="8"
     >
       <EditForm :post="post"/>
     </v-col>

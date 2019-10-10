@@ -98,8 +98,6 @@
             LoadingBar,
             TiptapVuetify
         },
-        mounted() {
-        },
         props: {
             post: {
                 type: Object,
@@ -117,9 +115,6 @@
                     title: [
                         v => !!v || 'Title is required'
                     ],
-                    body: [
-                        v => !!v || 'Body is required'
-                    ]
                 },
                 extensions: [
                     History,
