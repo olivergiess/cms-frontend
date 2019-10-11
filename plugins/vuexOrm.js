@@ -15,8 +15,8 @@ export default ({ app }) => {
 
         return response
       },
-      onUnauthorised(response) {
-          return this.$router.push('/login')
+      onUnauthorised(error) {
+        console.log(error);
       }
     }
   })

@@ -34,8 +34,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/vuexOrm.js',
+    '~/plugins/axios.js',
     '~/plugins/tipTapVuetify.js',
+    '~/plugins/vuexOrm.js',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -65,8 +66,8 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          login: { url: 'login', method: 'post', propertyName: 'data.access_token' },
-          logout: { url: 'logout', method: 'post' },
+          login: { url: 'auth/login', method: 'post', propertyName: 'data.access_token' },
+          logout: { url: 'auth/logout', method: 'post' },
           user: { url: 'user/current', method: 'get', propertyName: 'data' }
         }
       }
