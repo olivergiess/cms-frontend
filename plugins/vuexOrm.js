@@ -8,16 +8,7 @@ export default ({ app }) => {
   VuexORM.use(VuexORMAxios, {
     database,
     http: {
-      axios: app.$axios,
-      onResponse(response) {
-        if(response.data != undefined)
-          return response.data.data
-
-        return response
-      },
-      onUnauthorised(error) {
-        console.log(error);
-      }
+      axios: app.$axios
     }
   })
 
