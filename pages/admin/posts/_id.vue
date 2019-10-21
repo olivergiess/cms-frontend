@@ -18,18 +18,15 @@
           EditForm
       },
       mounted() {
-          Post.$get({
-              params: {
-                  id: this.$route.params.id
-              }})
+          Post.api().show(this.$route.params.id);
       },
       computed: {
           post() {
-              let post = Post.find(this.$route.params.id)
+              let post = Post.find(this.$route.params.id);
 
               return post != null
                   ? post
-                  : new Post()
+                  : new Post();
           }
       },
   }

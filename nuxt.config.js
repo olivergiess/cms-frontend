@@ -34,9 +34,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/axios.js',
-    '~/plugins/tipTapVuetify.js',
-    '~/plugins/vuexOrm.js',
+    '~/plugins/axios-refresh-interceptor.js',
+    '~/plugins/tip-tap-vuetify.js',
+    '~/plugins/vuex-orm-plugin-axios.js',
   ],
   /*
   ** Nuxt.js dev-modules

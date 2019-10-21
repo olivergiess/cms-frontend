@@ -16,46 +16,23 @@ export default class Post extends Model {
     }
   }
 
-  static methodConf = {
-    http: {
-      url: '/posts'
-    },
-    methods: {
-      $fetch: {
-        name: 'fetch',
-        http: {
-          url: '',
-          method: 'get',
-        },
+  static apiConfig = {
+    actions: {
+      fetchPublished(user) {
+        return this.get(`users/${user}/published`);
       },
-      $get: {
-        name: 'get',
-        http: {
-          url: '/:id',
-          method: 'get',
-        },
+      fetch() {
+        return this.get(`posts`);
       },
-      $create: {
-        name: 'create',
-        http: {
-          url: '',
-          method: 'post',
-        },
+      show(id) {
+        return this.get(`posts/${id}`);
       },
-      $update: {
-        name: 'update',
-        http: {
-          url: '/:id',
-          method: 'put',
-        },
+      create(data) {
+        return this.post(`posts`, data);
       },
-      $delete: {
-        name: 'delete',
-        http: {
-          url: '/:id',
-          method: 'delete',
-        },
-      },
-    },
-  }
+      update(id, data) {
+        return this.put(`posts/${id}`, data);
+      }
+    }
+  };
 }

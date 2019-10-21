@@ -62,7 +62,7 @@
           },
       },
       mounted() {
-          Post.$fetch().then(() => {
+          Post.api().fetch().then(() => {
               this.loading = false
           });
       },

@@ -11,12 +11,7 @@
         },
         methods: {
             action() {
-                return Post.$update({
-                    params: {
-                        id: this.post.id
-                    },
-                    data: this.post
-                })
+                return Post.api().update(this.post.id, this.post);
             }
         }
     }

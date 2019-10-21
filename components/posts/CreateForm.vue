@@ -11,9 +11,7 @@
         },
         methods: {
             action() {
-                return Post.$create({
-                    data: this.post
-                })
+                return Post.api().create(this.post);
             }
         }
     }
