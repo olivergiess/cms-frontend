@@ -17,23 +17,16 @@ export default class User extends Model {
     }
   }
 
-  static methodConf = {
-    http: {
-      url: '/user/current'
-    },
-    $get: {
-      name: 'get',
-      http: {
-        url: '',
-        method: 'get',
+
+
+  static apiConfig = {
+    actions: {
+      fetchWithPublished(slug) {
+        return this.get(`users/${slug}/posts/published`);
       },
-    },
-    $update: {
-      name: 'update',
-      http: {
-        url: '',
-        method: 'put',
+      show(id) {
+        return this.get(`users/${id}`);
       },
-    },
-  }
+    }
+  };
 }
