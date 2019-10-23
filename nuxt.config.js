@@ -81,7 +81,7 @@ module.exports = {
   },
 
   /*
-  ** vuetify module configuration
+  ** Vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
   */
   vuetify: {

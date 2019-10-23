@@ -12,7 +12,8 @@ export default class Post extends Model {
       title: this.string(''),
       body: this.string(''),
       publish_at: this.string(''),
-      user: this.belongsTo(User, 'user_id')
+      user: this.belongsTo(User, 'user_id'),
+      user_id: this.number(null)
     }
   }
 
