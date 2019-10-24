@@ -1,17 +1,30 @@
 <template>
-  <div>
-    {{ posts }}
-  </v-col>
+  <v-row
+    align="start"
+    justify="center"
+    no-gutters
+  >
+
+    <v-col cols="12">
+      <PostPreview/>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
+
     import User from '@/models/User'
     import Post from '@/models/Post'
-    import { mapGetters } from 'vuex'
+
+    import PostPreview from '@/components/pages/blog/PostPreview'
 
     export default {
         auth: false,
         layout: 'blog',
+        components: {
+            PostPreview
+        },
         mounted() {
             this.$store.commit('currentSlug/set', this.$route.params.slug);
 

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import CreateForm from '~/components/posts/CreateForm'
+  import CreateForm from '@/components/pages/admin/posts/CreateForm'
 
   export default {
       layout: 'admin',

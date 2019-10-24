@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import EditForm from '~/components/posts/EditForm'
+  import EditForm from '@/components/pages/admin/posts/EditForm'
   import Post from '@/models/Post'
 
   export default {

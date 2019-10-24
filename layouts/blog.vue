@@ -3,19 +3,7 @@
     <NavBar/>
 
     <v-content>
-      <v-container>
-        <v-row
-          align="start"
-          justify="center"
-        >
-          <v-col
-            cols="11"
-            lg="8"
-          >
-            <nuxt/>
-          </v-col>
-        </v-row>
-      </v-container>
+      <nuxt/>
     </v-content>
 
     <Footer/>
