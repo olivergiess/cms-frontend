@@ -1,6 +1,7 @@
 <template>
   <v-col
-    cols="6"
+    cols="11"
+    lg="8"
   >
     <v-card class="elevation-12">
       <v-toolbar

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <NavDrawer :drawer="drawer"/>
+    <NavDraw :drawer="drawer"/>
 
     <v-app-bar
       clipped-left
@@ -32,14 +32,14 @@
 </template>
 
 <script>
-  import Avatar from '~/components/base/Avatar'
-  import NavDrawer from '~/components/base/NavDrawer'
-  import Footer from '~/components/base/Footer'
+  import Avatar from '@/components/layouts/admin/Avatar'
+  import NavDraw from '@/components/layouts/admin/NavDraw'
+  import Footer from '@/components/layouts/core/Footer'
 
   export default {
     components: {
         Avatar,
-        NavDrawer,
+        NavDraw,
         Footer,
     },
     data () {

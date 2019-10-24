@@ -47,17 +47,21 @@
 </template>
 
 <script>
-    import LoadingBar from '~/components/LoadingBar'
+    import LoadingBar from '~/components/LoadingBar';
+    import Post from '@/models/Post';
 
     export default {
         components: {
           LoadingBar
         },
+        // mounted() {
+        //   this.login();
+        // },
         data: () => ({
             loading: false,
             form: {
-                email: '',
-                password: ''
+                email: 'test@test.com',
+                password: 'password'
             },
         }),
         methods: {

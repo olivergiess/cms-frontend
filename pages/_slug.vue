@@ -1,30 +1,37 @@
 <template>
-  <v-col
-    cols="12"
-    sm="10"
-    md="8"
-  >
+  <div>
     {{ posts }}
   </v-col>
 </template>
 
 <script>
     import User from '@/models/User'
+    import Post from '@/models/Post'
+    import { mapGetters } from 'vuex'
 
     export default {
         auth: false,
+        layout: 'blog',
         mounted() {
-            User.api().fetchWithPublished(this.$route.params.slug);
+            this.$store.commit('currentSlug/set', this.$route.params.slug);
+
+            User.api().fetchWithPublished(this.slug);
         },
         computed: {
+            ...mapGetters({
+                slug: 'currentSlug/get',
+            }),
             posts() {
-              return User.query()
-                      .where('slug', this.$route.params.slug)
-                      .with('posts')
-                      .first()
-                      .posts;
+                return Post
+                    .query()
+                    .where((post) => {
+                        return Date.parse(post.publish_at) < Date.now();
+                    })
+                    .with('user', (query) => {
+                        query.where('slug', this.slug);
+                    })
+                    .all();
             }
         }
-        ,
     }
 </script>
