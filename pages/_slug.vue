@@ -1,14 +1,35 @@
 <template>
-  <v-row
-    align="start"
-    justify="center"
-    no-gutters
-  >
-
-    <v-col cols="12">
-      <PostPreview/>
-    </v-col>
-  </v-row>
+  <v-container>
+    <v-row
+      align="start"
+      justify="center"
+    >
+      <v-col cols=12 md="5">
+        <PostPreview/>
+      </v-col>
+      <v-col cols=12 md="5">
+        <PostPreview/>
+      </v-col>
+      <v-col cols=12 md="5">
+        <PostPreview/>
+      </v-col>
+      <v-col cols=12 md="5">
+        <PostPreview/>
+      </v-col>
+      <v-col cols=12 md="5">
+        <PostPreview/>
+      </v-col>
+      <v-col cols=12 md="5">
+        <PostPreview/>
+      </v-col>
+      <v-col cols=12 md="5">
+        <PostPreview/>
+      </v-col>
+      <v-col cols=12 md="5">
+        <PostPreview/>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -23,7 +44,7 @@
         auth: false,
         layout: 'blog',
         components: {
-            PostPreview
+            PostPreview,
         },
         mounted() {
             this.$store.commit('currentSlug/set', this.$route.params.slug);
