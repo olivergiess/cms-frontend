@@ -7,13 +7,28 @@
       v-slot:default="{ hover }"
       open-delay="30"
       close-delay="30"
+
     >
       <v-img
         :class="{ 'on-hover' : hover }"
         src="http://olivergiess.com/dynamic/images/full/5b811292ed9bf.jpeg"
         height="20vh"
       >
-        <v-card-title>Read</v-card-title>
+        <v-row
+          no-gutters
+          justify="center"
+          align="center"
+          class="h-100"
+        >
+          <v-col cols="auto">
+            <v-card-title
+              v-if="hover"
+              transition="slide-y-transition"
+              class="white--text"
+            >Read
+            </v-card-title>
+          </v-col>
+        </v-row>
       </v-img>
     </v-hover>
     <v-card-title
@@ -31,12 +46,15 @@
 </template>
 
 <script>
-    export default {
-    }
+    export default {}
 </script>
 
 <style scoped>
-  .on-hover{
+  .on-hover {
     opacity: 0.5;
+  }
+
+  .h-100 {
+    height: 100%;
   }
 </style>
