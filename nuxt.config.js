@@ -54,13 +54,13 @@ module.exports = {
 
   axios: {
       prefix: '/api/',
-      host: 'blog-backend.test',
+      host: 'cms-backend.test',
       port: 80
   },
 
   auth: {
     redirect: {
-      login: '/',
+      login: '/login',
       home: '/admin',
     },
     strategies: {

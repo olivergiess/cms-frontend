@@ -14,7 +14,7 @@
         >
           <v-col
             cols="11"
-            lg="8"
+            lg="9"
           >
             <v-toolbar
               flat
@@ -57,16 +57,12 @@
             items() {
                 return [
                     {
-                        title: 'Home',
+                        title: 'Blog',
                         to: '/' + this.slug
                     },
                     {
-                        title: 'About',
-                        to: '/' + this.slug + '/about'
-                    },
-                    {
                         title: 'Login',
-                        to: '/'
+                        to: '/login'
                     },
                 ]
             }

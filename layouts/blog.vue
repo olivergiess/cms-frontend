@@ -15,9 +15,9 @@
     import Footer from '@/components/layouts/core/Footer'
 
     export default {
-        components: {
-            NavBar,
-            Footer
-        }
+      components: {
+        NavBar,
+        Footer
+      }
     }
 </script>
