@@ -25,7 +25,8 @@
 
               <v-toolbar-items>
                 <v-btn
-                  v-for="item in items"
+                  v-for="(item, i) in items"
+                  :key="i"
                   :to="item.to"
                   text
                 >

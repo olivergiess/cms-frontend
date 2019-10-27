@@ -16,6 +16,7 @@
             >
                 <v-col
                     v-for="post in posts"
+                    :key="post.id"
                     cols="12"
                     md="5"
                 >

@@ -19,6 +19,9 @@ export default class Post extends Model {
 
   static apiConfig = {
     actions: {
+      fetchPublished(id) {
+        return this.get(`/posts/published/${id}?expand=user`);
+      },
       fetch() {
         return this.get(`posts`);
       },

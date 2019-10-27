@@ -21,7 +21,10 @@
     #post h3 {
         margin-bottom: 1em;
     }
-    #post p {
+    #post p{
         line-height: 2em !important;
+    }
+    #post blockquote p em::before {
+        content: '<i class="v-icon mdi mdi-format-quote-close"></i>'
     }
 </style>

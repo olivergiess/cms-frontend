@@ -47,14 +47,20 @@
             ViewPost,
         },
         mounted() {
+            this.$store.commit('currentSlug/set', this.$route.params.slug);
 
+            Post.api().fetchPublished(this.id);
         },
         computed: {
             id() {
                 return this.$route.params.id;
             },
             post() {
-                return Post.find(this.id);
+                let post = Post.find(this.id);
+
+                return post
+                    ? post
+                    : new Post;
             }
         }
     }
