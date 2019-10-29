@@ -38,10 +38,19 @@
         />
 
         <v-text-field
+          label="URL"
+          type="text"
+          hint="This will form part of your Blog's URL"
+          v-model="form.data.slug"
+          :rules="[rules.required, rules.slug_min, rules.slug_format]"
+          :disabled="loading"
+        />
+
+        <v-text-field
           label="Email"
           type="email"
           v-model="form.data.email"
-          :rules="[rules.required, rules.email]"
+          :rules="[rules.required, rules.email_format]"
           :disabled="loading"
         />
 
@@ -49,7 +58,7 @@
           label="Confirm Email"
           type="text"
           v-model="form.data.email_confirmation"
-          :rules="[rules.required, rules.email]"
+          :rules="[rules.required, rules.email_format]"
           :disabled="loading"
         />
 
@@ -58,7 +67,7 @@
           type="password"
           hint="At least 8 characters"
           v-model="form.data.password"
-          :rules="[rules.required, rules.min]"
+          :rules="[rules.required, rules.password_min]"
           :disabled="loading"
         />
 
@@ -96,13 +105,16 @@
             loading: false,
             rules: {
                 required: v => !!v || 'This field is required',
-                email: v => /.+@.+\..+/.test(v) || 'Invalid email format',
-                min: v => v.length >= 8 || 'Must be at least 8 characters',
+                email_format: v => /.+@.+\..+/.test(v) || 'Email is invalid',
+                password_min: v => v.length >= 8 || 'Password must be at least 8 characters',
+                slug_min: v => (v && v.length > 2) || 'URL must be at least 3 characters',
+                slug_format: v => /^[a-z_]+$/.test(v) || 'URL can only be lowercase alphabetic characters or underscores',
             },
             form: {
                 data: {
                     first_name: '',
                     last_name: '',
+                    slug: '',
                     email: '',
                     email_confirmation: '',
                     password: '',
@@ -117,13 +129,14 @@
 
                 this.loading = true;
 
-                this.$axios.post('/users', {
-                    data: this.form.data
-                }).then(() => {
-                    this.$router.push('/');
-                }).finally(() => {
-                    this.loading = false;
-                })
+                this.$axios
+                    .post('/users', this.form.data)
+                    .then(() => {
+                        this.$router.push('/');
+                    })
+                    .finally(() => {
+                        this.loading = false;
+                    });
             }
         }
     }

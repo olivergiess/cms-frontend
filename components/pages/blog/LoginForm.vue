@@ -43,6 +43,13 @@
       >
         Login
       </v-btn>
+      <v-spacer></v-spacer>
+      <v-btn
+        :to="'/register'"
+        color="primary"
+      >
+        Register
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -71,13 +78,14 @@
             login() {
                 this.loading = true;
 
-                this.$auth.login({
-                    data: this.form.data
-                }).then(() => {
-                    this.$router.push('/admin');
-                }).finally(() => {
-                    this.loading = false;
-                })
+                this.$auth
+                    .login(this.form)
+                    .then(() => {
+                        this.$router.push('/admin');
+                    })
+                    .finally(() => {
+                        this.loading = false;
+                    });
             }
         }
     }

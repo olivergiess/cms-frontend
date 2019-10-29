@@ -73,11 +73,6 @@
                         title: 'Login',
                         to: '/login'
                     });
-
-                    items.push({
-                        title: 'Register',
-                        to: '/register'
-                    });
                 }
 
                 return items
