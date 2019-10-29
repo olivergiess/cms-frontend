@@ -10,19 +10,19 @@
         cols="12"
         md="5"
       >
-        <LoginForm/>
+        <RegisterForm/>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-  import LoginForm from '~/components/pages/blog/LoginForm'
+  import RegisterForm from '~/components/pages/blog/RegisterForm'
 
   export default {
     auth: 'guest',
     components: {
-      LoginForm
+      RegisterForm
     }
   }
 </script>

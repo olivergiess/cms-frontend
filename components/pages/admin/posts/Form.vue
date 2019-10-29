@@ -6,10 +6,11 @@
       flat
     >
       <v-toolbar-title>{{ prefix }} Post</v-toolbar-title>
-      <div class="flex-grow-1"></div>
     </v-toolbar>
 
-    <loading-bar :loading="loading"/>
+    <loading-bar
+      v-if="loading"
+    />
 
     <v-card-text>
       <v-form
@@ -24,7 +25,7 @@
           label="Title"
           required
           :disabled="loading"
-        ></v-text-field>
+        />
 
         <tiptap-vuetify
           class="mt-6 mb-6"
@@ -46,7 +47,7 @@
               readonly
               v-on="on"
               :disabled="loading"
-            ></v-text-field>
+            />
           </template>
           <v-date-picker
             v-model="post.publish_at"

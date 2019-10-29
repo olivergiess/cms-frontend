@@ -28,7 +28,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import {mapGetters} from 'vuex'
 
     import User from '@/models/User'
     import Post from '@/models/Post'

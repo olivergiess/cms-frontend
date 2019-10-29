@@ -26,7 +26,9 @@
         </v-btn>
       </v-toolbar>
 
-      <loading-bar :loading="loading" />
+      <loading-bar
+        v-if="loading"
+      />
 
       <v-data-table
         :headers="headers"
@@ -56,15 +58,22 @@
       components: {
         LoadingBar
       },
-      computed: {
-          posts() {
-              return Post.all();
-          },
-      },
       mounted() {
           Post.api().fetch().then(() => {
               this.loading = false
           });
+      },
+      computed: {
+          user() {
+            return this.$auth.user
+          },
+          posts() {
+              return Post.query()
+                  .with('user', (query) => {
+                      query.where('slug', this.user.slug);
+                  })
+                  .all();
+          },
       },
       data() {
           return {

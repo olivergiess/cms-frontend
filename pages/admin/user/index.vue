@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import EditForm from '~/components/user/EditForm'
+    import EditForm from '@/components/pages/admin/user/EditForm'
 
     export default {
         layout: 'admin',

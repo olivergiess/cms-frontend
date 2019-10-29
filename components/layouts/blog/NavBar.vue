@@ -1,47 +1,47 @@
 <template>
   <v-app-bar
-      app
-      fixed
-      :elevate-on-scroll="true"
+    app
+    fixed
+    :elevate-on-scroll="true"
+  >
+    <v-container
+      fill-height
     >
-      <v-container
-        fill-height
+      <v-row
+        no-gutters
+        justify="center"
+        align="center"
       >
-        <v-row
-          no-gutters
-          justify="center"
-          align="center"
+        <v-col
+          cols="11"
+          lg="9"
         >
-          <v-col
-            cols="11"
-            lg="9"
+          <v-toolbar
+            flat
           >
-            <v-toolbar
-              flat
-            >
-              <v-toolbar-title v-text="user.first_name"/>
+            <v-toolbar-title v-text="user.first_name"/>
 
-              <div class="flex-grow-1"/>
+            <div class="flex-grow-1"/>
 
-              <v-toolbar-items>
-                <v-btn
-                  v-for="(item, i) in items"
-                  :key="i"
-                  :to="item.to"
-                  text
-                >
-                  {{item.title}}
-                </v-btn>
-              </v-toolbar-items>
-            </v-toolbar>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-app-bar>
+            <v-toolbar-items>
+              <v-btn
+                v-for="(item, i) in items"
+                :key="i"
+                :to="item.to"
+                text
+              >
+                {{item.title}}
+              </v-btn>
+            </v-toolbar-items>
+          </v-toolbar>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-app-bar>
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import {mapGetters} from 'vuex'
 
     import User from '@/models/User'
 
@@ -56,16 +56,31 @@
                 return user ? user : new User();
             },
             items() {
-                return [
+                let items = [
                     {
                         title: 'Blog',
                         to: '/' + this.slug
                     },
-                    {
+                ]
+
+                if (this.$auth.loggedIn)
+                    items.push({
+                        title: 'Manage',
+                        to: '/admin'
+                    });
+                else {
+                    items.push({
                         title: 'Login',
                         to: '/login'
-                    },
-                ]
+                    });
+
+                    items.push({
+                        title: 'Register',
+                        to: '/register'
+                    });
+                }
+
+                return items
             }
         }
     }
