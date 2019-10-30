@@ -2,6 +2,7 @@ const colors = require('vuetify/es5/util/colors').default
 
 module.exports = {
   mode: 'spa',
+
   /*
   ** Headers of the page
   */
@@ -17,6 +18,7 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+
   /*
   ** Customize the progress-bar color
   */
@@ -25,25 +27,30 @@ module.exports = {
     color: 'rgb(25, 118, 210)',
     background: '#fff'
   },
+
   /*
   ** Global CSS
   */
   css: [
   ],
+
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
     '~/plugins/axios-refresh-interceptor.js',
     '~/plugins/tip-tap-vuetify.js',
+    '~/plugins/vue-composition-api.js',
     '~/plugins/vuex-orm-plugin-axios.js',
   ],
+
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
     '@nuxtjs/vuetify',
   ],
+
   /*
   ** Nuxt.js modules
   */
@@ -87,6 +94,7 @@ module.exports = {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
   },
+
   /*
   ** Build configuration
   */

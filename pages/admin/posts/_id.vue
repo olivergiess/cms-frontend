@@ -1,33 +1,28 @@
 <template>
-    <v-col
-      cols="12"
-      sm="10"
-      md="8"
-    >
-      <EditForm :post="post"/>
-    </v-col>
+  <v-col
+    cols="12"
+    sm="10"
+    md="8"
+  >
+    <EditForm :post="post"/>
+  </v-col>
 </template>
 
 <script>
-  import EditForm from '@/components/pages/admin/posts/EditForm'
-  import Post from '@/models/Post'
+    import EditForm from '@/components/pages/admin/posts/EditForm'
+    import {retrievePost} from "@/libraries/Posts";
 
-  export default {
-      layout: 'admin',
-      components: {
-          EditForm
-      },
-      mounted() {
-          Post.api().show(this.$route.params.id);
-      },
-      computed: {
-          post() {
-              let post = Post.find(this.$route.params.id);
+    export default {
+        layout: 'admin',
+        setup(props, context) {
+            let id = context.root.$route.params.id;
 
-              return post != null
-                  ? post
-                  : new Post();
-          }
-      },
-  }
+            const post = retrievePost(id);
+
+            return post;
+        },
+        components: {
+            EditForm
+        },
+    }
 </script>

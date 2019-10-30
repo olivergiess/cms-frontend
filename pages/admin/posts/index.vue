@@ -14,7 +14,7 @@
           Posts
         </v-toolbar-title>
 
-        <div class="flex-grow-1" />
+        <div class="flex-grow-1"/>
 
         <v-btn
           fab
@@ -27,7 +27,7 @@
       </v-toolbar>
 
       <loading-bar
-        v-if="loading"
+        v-if="postsLoading"
       />
 
       <v-data-table
@@ -50,48 +50,42 @@
 </template>
 
 <script>
-  import LoadingBar from '~/components/LoadingBar'
-  import Post from '@/models/Post'
+    import LoadingBar from '~/components/LoadingBar'
+    import {retrievePosts} from '@/libraries/Posts';
 
     export default {
-      layout: 'admin',
-      components: {
-        LoadingBar
-      },
-      mounted() {
-          Post.api().fetch().then(() => {
-              this.loading = false
-          });
-      },
-      computed: {
-          user() {
-            return this.$auth.user
-          },
-          posts() {
-              return Post.query()
-                  .with('user', (query) => {
-                      query.where('slug', this.user.slug);
-                  })
-                  .all();
-          },
-      },
-      data() {
-          return {
-              loading: true,
-              headers: [
-                  { text: 'Title', value: 'title' },
-                  { text: 'Publish At', value: 'publish_at' },
-                  { text: 'Actions', value: 'action', sortable: false },
-              ]
+        layout: 'admin',
+        components: {
+            LoadingBar
+        },
+        setup() {
+            const {postsLoading, posts} = retrievePosts();
+
+            return {postsLoading, posts};
+        },
+        computed: {
+          test() {
+              console.log(postsLoading);
+
+              return postsLoading;
           }
-      },
-      methods: {
-          edit(item) {
-              this.$router.push('/admin/posts/' + item.$id)
-          },
-          create() {
-              this.$router.push('/admin/posts/create')
-          }
-      }
+        },
+        data() {
+            return {
+                headers: [
+                    {text: 'Title', value: 'title'},
+                    {text: 'Publish At', value: 'publish_at'},
+                    {text: 'Actions', value: 'action', sortable: false},
+                ]
+            }
+        },
+        methods: {
+            edit(item) {
+                this.$router.push('/admin/posts/' + item.$id)
+            },
+            create() {
+                this.$router.push('/admin/posts/create')
+            }
+        }
     }
 </script>
