@@ -13,11 +13,6 @@
                         title: 'Posts',
                         to: '/admin/posts'
                     },
-                    {
-                        icon: 'mdi-notebook',
-                        title: 'Blog',
-                        to: '/test'
-                    },
                 ],
             }
         }

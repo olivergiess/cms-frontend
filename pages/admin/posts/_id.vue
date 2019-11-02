@@ -10,19 +10,19 @@
 
 <script>
     import EditForm from '@/components/pages/admin/posts/EditForm'
-    import {retrievePost} from "@/libraries/Posts";
+    import {showPost} from '@/mixins/compositions/Posts';
 
     export default {
         layout: 'admin',
+        components: {
+          EditForm
+        },
         setup(props, context) {
             let id = context.root.$route.params.id;
 
-            const post = retrievePost(id);
+            const post = showPost(id);
 
             return post;
-        },
-        components: {
-            EditForm
         },
     }
 </script>

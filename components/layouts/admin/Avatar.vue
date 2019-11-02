@@ -29,8 +29,6 @@
 </template>
 
 <script>
-  import Post from '@/models/Post'
-
     export default {
         data: () => {
             return {
@@ -53,7 +51,7 @@
             logout() {
                 this.$auth.logout()
                   .then(() => {
-                      Post.deleteAll()
+                      //DO SOMETHING
                   })
             }
         }

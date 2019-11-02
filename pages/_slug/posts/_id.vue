@@ -34,10 +34,10 @@
 </template>
 
 <script>
-    import Post from '@/models/Post'
-
     import Banner from '@/components/layouts/blog/Banner'
     import ViewPost from '@/components/pages/blog/ViewPost'
+
+    import {showPublishedPost} from '@/mixins/compositions/Posts';
 
     export default {
         auth: false,
@@ -46,23 +46,13 @@
             Banner,
             ViewPost,
         },
-        mounted() {
-            this.$store.commit('currentSlug/set', this.$route.params.slug);
+        setup(props, context) {
+            let id = context.root.$route.params.id;
+console.log(id);
+            const post = showPublishedPost(id);
 
-            Post.api().fetchPublished(this.id);
+            return post;
         },
-        computed: {
-            id() {
-                return this.$route.params.id;
-            },
-            post() {
-                let post = Post.find(this.id);
-
-                return post
-                    ? post
-                    : new Post;
-            }
-        }
     }
 </script>
 

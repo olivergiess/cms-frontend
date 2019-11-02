@@ -21,9 +21,6 @@ export default class User extends Model {
 
   static apiConfig = {
     actions: {
-      fetchWithPublished(slug) {
-        return this.get(`users/${slug}/posts/published`);
-      },
       show(id) {
         return this.get(`users/${id}`);
       },

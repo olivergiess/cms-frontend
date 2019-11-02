@@ -92,7 +92,7 @@
         History
     } from 'tiptap-vuetify'
 
-    import Post from '@/models/Post'
+    import Post from '@/store/models/Post'
 
     export default {
         components: {
@@ -102,7 +102,7 @@
         props: {
             post: {
                 type: Object,
-                default: () => (new Post())
+                default: () => new Post()
             },
         },
         data: () => {

@@ -51,24 +51,20 @@
 
 <script>
     import LoadingBar from '~/components/LoadingBar'
-    import {retrievePosts} from '@/libraries/Posts';
+
+    import {allPosts} from '@/mixins/compositions/Posts';
 
     export default {
         layout: 'admin',
         components: {
             LoadingBar
         },
-        setup() {
-            const {postsLoading, posts} = retrievePosts();
+        setup(props, context) {
+            let user_id = context.root.$auth.user.id;
+
+            const {postsLoading, posts} = allPosts(user_id);
 
             return {postsLoading, posts};
-        },
-        computed: {
-          test() {
-              console.log(postsLoading);
-
-              return postsLoading;
-          }
         },
         data() {
             return {

@@ -53,7 +53,7 @@
 <script>
     import LoadingBar from '~/components/LoadingBar'
 
-    import User from '@/models/User'
+    import User from '@/store/models/User'
 
     export default {
         components: {

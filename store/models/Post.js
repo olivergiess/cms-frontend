@@ -19,11 +19,14 @@ export default class Post extends Model {
 
   static apiConfig = {
     actions: {
-      fetchPublished(id) {
+      allPublished(slug) {
+        return this.get(`/posts/published?expand=user&filter[user.slug]=${slug}`);
+      },
+      showPublished(id) {
         return this.get(`/posts/published/${id}?expand=user`);
       },
-      fetch() {
-        return this.get(`posts`);
+      all() {
+        return this.get(`posts?expand=user`);
       },
       show(id) {
         return this.get(`posts/${id}`);

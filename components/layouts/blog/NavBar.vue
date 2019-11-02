@@ -43,7 +43,7 @@
 <script>
     import {mapGetters} from 'vuex'
 
-    import User from '@/models/User'
+    import User from '@/store/models/User'
 
     export default {
         computed: {
@@ -60,7 +60,7 @@
                     {
                         title: 'Blog',
                         to: '/' + this.slug
-                    },
+                    }
                 ]
 
                 if (this.$auth.loggedIn)

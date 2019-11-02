@@ -1,24 +1,17 @@
 import Vuex from 'vuex'
 import VuexORM from '@vuex-orm/core'
 import VuexORMAxios from '@vuex-orm/plugin-axios'
+import {JsonAPIConverter} from '@/libraries/ResponseConverter'
 
-import User from '@/models/User'
-import Post from '@/models/Post'
+import User from '@/store/models/User'
+import Post from '@/store/models/Post'
 
 VuexORM.use(VuexORMAxios, {
     dataTransformer: function (response) {
-        let data = response.data;
+        if(response.data === null)
+            return;
 
-        if(!data.relationships)
-            return data;
-
-        for(var relationship in data.relationships) {
-            data[relationship] = data.relationships[relationship].data;
-        }
-
-        delete data.relationships;
-
-        return data;
+        return new JsonAPIConverter(response);
     }
 });
 

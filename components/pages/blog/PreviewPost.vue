@@ -9,7 +9,7 @@
       tile
       color="transparent"
       :nuxt-link="true"
-      :to="`/${post.user.slug}/posts/${post.id}`"
+      :to="url"
     >
       <v-img
         :class="{ 'on-hover' : hover }"
@@ -34,7 +34,7 @@
       <v-card-text
         class="pl-0 caption text-uppercase"
       >
-        By: <strong>{{ author }}</strong>&nbsp&nbsp/&nbsp&nbsp<span class="light-green--text text--darken--5">{{ formated_publish_at }}</span>
+        By: <strong>{{ author }}</strong>&nbsp&nbsp/&nbsp&nbsp<span class="light-green--text text--darken--5">{{ published_date }}</span>
       </v-card-text>
     </v-card>
   </v-hover>
@@ -43,20 +43,19 @@
 <script>
   import moment from 'moment'
 
-  import Post from '@/models/Post'
-
     export default {
-      props: {
-        post: {
-          default: () => { return new Post }
-        }
-      },
+      props: [
+        'post'
+      ],
       computed: {
         author() {
           return this.post.user.first_name + ' ' + this.post.user.last_name;
         },
-        formated_publish_at() {
+        published_date() {
           return moment(this.post.publish_at).format('Do MMMM YYYY')
+        },
+        url() {
+          return `/${this.post.user.slug}/posts/${this.post.id}`
         }
       }
 
