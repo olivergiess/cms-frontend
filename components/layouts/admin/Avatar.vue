@@ -51,7 +51,7 @@
             logout() {
                 this.$auth.logout()
                   .then(() => {
-                      //DO SOMETHING
+                      this.$store.dispatch('entities/deleteAll');
                   })
             }
         }

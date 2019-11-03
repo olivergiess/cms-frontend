@@ -11,7 +11,7 @@
         },
         methods: {
             action() {
-                return Post.api().create(this.post);
+                return Post.api().create(this.form.data);
             }
         }
     }

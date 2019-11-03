@@ -1,5 +1,5 @@
 export const state = () => ({
-  slug: false
+  slug: ''
 })
 
 export const mutations = {
@@ -7,7 +7,7 @@ export const mutations = {
     state.slug = slug
   },
   reset (state) {
-    state.slug = false
+    state.slug = ''
   }
 };
 

@@ -1,97 +1,103 @@
 <template>
-  <v-card
-    class="elevation-12"
-  >
-    <v-toolbar
-      color="primary"
-      dark
-      flat
+    <v-card
+            class="elevation-12"
     >
-      <v-toolbar-title>
-        Register
-      </v-toolbar-title>
-    </v-toolbar>
+        <v-toolbar
+                color="primary"
+                dark
+                flat
+        >
+            <v-toolbar-title>
+                Register
+            </v-toolbar-title>
+        </v-toolbar>
 
-    <loading-bar
-      v-if="loading"
-    />
-
-    <v-card-text>
-      <v-form
-        v-on:submit.prevent="register"
-        ref="form"
-      >
-        <v-text-field
-          label="First Name"
-          type="text"
-          v-model="form.data.first_name"
-          :rules="[rules.required]"
-          :disabled="loading"
+        <loading-bar
+                v-if="loading"
         />
 
-        <v-text-field
-          label="Last Name"
-          type="text"
-          v-model="form.data.last_name"
-          :rules="[rules.required]"
-          :disabled="loading"
-        />
+        <v-card-text>
+            <v-form
+                    v-on:submit.prevent="register"
+                    ref="form"
+            >
+                <v-text-field
+                        label="First Name"
+                        type="text"
+                        v-model="form.data.first_name"
+                        @input="form.errors.first_name = ''"
+                        :error-messages="form.errors.first_name"
+                        :disabled="loading"
+                />
 
-        <v-text-field
-          label="URL"
-          type="text"
-          hint="This will form part of your Blog's URL"
-          v-model="form.data.slug"
-          :rules="[rules.required, rules.slug_min, rules.slug_format]"
-          :disabled="loading"
-        />
+                <v-text-field
+                        label="Last Name"
+                        type="text"
+                        v-model="form.data.last_name"
+                        @input="form.errors.last_name = ''"
+                        :error-messages="form.errors.last_name"
+                        :disabled="loading"
+                />
 
-        <v-text-field
-          label="Email"
-          type="email"
-          v-model="form.data.email"
-          :rules="[rules.required, rules.email_format]"
-          :disabled="loading"
-        />
+                <v-text-field
+                        label="Slug"
+                        type="text"
+                        hint="This will form part of your Blog's Slug"
+                        v-model="form.data.slug"
+                        @input="form.errors.slug = ''"
+                        :error-messages="form.errors.slug"
+                        :disabled="loading"
+                />
 
-        <v-text-field
-          label="Confirm Email"
-          type="text"
-          v-model="form.data.email_confirmation"
-          :rules="[rules.required, rules.email_format]"
-          :disabled="loading"
-        />
+                <v-text-field
+                        label="Email"
+                        type="email"
+                        v-model="form.data.email"
+                        @input="form.errors.email = ''"
+                        :error-messages="form.errors.email"
+                        :disabled="loading"
+                />
 
-        <v-text-field
-          label="Password"
-          type="password"
-          hint="At least 8 characters"
-          v-model="form.data.password"
-          :rules="[rules.required, rules.password_min]"
-          :disabled="loading"
-        />
+                <v-text-field
+                        label="Confirm Email"
+                        type="text"
+                        v-model="form.data.email_confirmation"
+                        @input="form.errors.email_confirmation = ''"
+                        :error-messages="form.errors.email_confirmation"
+                        :disabled="loading"
+                />
 
-        <v-text-field
-          label="Confirm Password"
-          type="password"
-          v-model="form.data.password_confirmation"
-          :rules="[rules.required]"
-          :disabled="loading"
-        />
-      </v-form>
-    </v-card-text>
-    <v-card-actions>
-      <v-btn
-        type="submit"
-        v-on:click.prevent="register"
-        color="primary"
-        :disabled="loading"
-        :loading="loading"
-      >
-        Submit
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+                <v-text-field
+                        label="Password"
+                        type="password"
+                        hint="At least 8 characters"
+                        v-model="form.data.password"
+                        @input="form.errors.password = ''"
+                        :error-messages="form.errors.password"
+                        :disabled="loading"
+                />
+
+                <v-text-field
+                        label="Confirm Password"
+                        type="password"
+                        v-model="form.data.password_confirmation"
+                        @input="form.errors.password_confirmation = ''"
+                        :error-messages="form.errors.password_confirmation"
+                        :disabled="loading"
+                />
+            </v-form>
+        </v-card-text>
+        <v-card-actions>
+            <v-btn
+                    type="submit"
+                    v-on:click.prevent="register"
+                    color="primary"
+                    :loading="loading"
+            >
+                Submit
+            </v-btn>
+        </v-card-actions>
+    </v-card>
 </template>
 
 <script>
@@ -103,15 +109,17 @@
         },
         data: () => ({
             loading: false,
-            rules: {
-                required: v => !!v || 'This field is required',
-                email_format: v => /.+@.+\..+/.test(v) || 'Email is invalid',
-                password_min: v => v.length >= 8 || 'Password must be at least 8 characters',
-                slug_min: v => (v && v.length > 2) || 'URL must be at least 3 characters',
-                slug_format: v => /^[a-z_]+$/.test(v) || 'URL can only be lowercase alphabetic characters or underscores',
-            },
             form: {
                 data: {
+                    first_name: '',
+                    last_name: '',
+                    slug: '',
+                    email: '',
+                    email_confirmation: '',
+                    password: '',
+                    password_confirmation: '',
+                },
+                errors: {
                     first_name: '',
                     last_name: '',
                     slug: '',
@@ -133,6 +141,15 @@
                     .post('/users', this.form.data)
                     .then(() => {
                         this.$router.push('/');
+                    })
+                    .catch((error) => {
+                        let errors = error.response.data.errors;
+
+                        for(let field in this.form.errors) {
+                          if(errors[field] !== undefined) {
+                            this.form.errors[field] = errors[field];
+                          }
+                        }
                     })
                     .finally(() => {
                         this.loading = false;

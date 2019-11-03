@@ -11,7 +11,7 @@
         },
         methods: {
             action() {
-                return Post.api().update(this.post.id, this.post);
+                return Post.api().update(this.post.id, this.form.data);
             }
         }
     }

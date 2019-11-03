@@ -9,6 +9,11 @@
                         to: '/admin'
                     },
                     {
+                        icon: 'mdi-wall',
+                        title: 'Blog',
+                        to: '/' + this.$auth.user.slug
+                    },
+                    {
                         icon: 'mdi-notebook',
                         title: 'Posts',
                         to: '/admin/posts'

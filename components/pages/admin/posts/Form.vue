@@ -1,74 +1,79 @@
 <template>
-  <v-card class="elevation-12">
-    <v-toolbar
-      color="primary"
-      class="white--text"
-      flat
-    >
-      <v-toolbar-title>{{ prefix }} Post</v-toolbar-title>
-    </v-toolbar>
-
-    <loading-bar
-      v-if="loading"
-    />
-
-    <v-card-text>
-      <v-form
-        v-model="form.valid"
-        v-on:submit.prevent="submit"
-        ref="form"
-      >
-        <v-text-field
-          v-model="post.title"
-          :rules="rules.title"
-          :counter="30"
-          label="Title"
-          required
-          :disabled="loading"
-        />
-
-        <tiptap-vuetify
-          class="mt-6 mb-6"
-          v-model="post.body"
-          :extensions="extensions"
-        />
-
-        <v-menu
-          v-model="form.date_menu"
-          :close-on-content-click="true"
-          transition="scale-transition"
-          offset-y
-          min-width="290px"
+    <v-card class="elevation-12">
+        <v-toolbar
+                color="primary"
+                class="white--text"
+                flat
         >
-          <template v-slot:activator="{ on }">
-            <v-text-field
-              v-model="post.publish_at"
-              label="Publish At"
-              readonly
-              v-on="on"
-              :disabled="loading"
-            />
-          </template>
-          <v-date-picker
-            v-model="post.publish_at"
-            @input="form.date_menu = false"
-            color="primary"
-            :disabled="loading"
-          ></v-date-picker>
-        </v-menu>
-      </v-form>
-    </v-card-text>
+            <v-toolbar-title>{{ prefix }} Post</v-toolbar-title>
+        </v-toolbar>
 
-    <v-card-actions>
-      <v-btn
-        color="primary lighten-1"
-        @click.prevent="submit"
-        :disabled="loading"
-      >
-        Submit
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+        <loading-bar
+                v-if="loading"
+        />
+
+        <v-card-text>
+            <v-form
+                    v-on:submit.prevent="submit"
+                    ref="form"
+            >
+                <v-text-field
+                        label="Title"
+                        v-model="form.data.title"
+                        @input="form.errors.title = ''"
+                        :error-messages="form.errors.title"
+                        :disabled="loading"
+                />
+
+                <v-input
+                        class="pt-2 mt-1"
+                        :error-messages="form.errors.body"
+                >
+                    <tiptap-vuetify
+                            :extensions="extensions"
+                            v-model="form.data.body"
+                            @input="form.errors.body = ''"
+                            class="max-width"
+                    />
+                </v-input>
+
+                <v-menu
+                        v-model="form.field.publish_at.date_menu"
+                        :close-on-content-click="true"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="290px"
+                >
+                    <template v-slot:activator="{ on }">
+                        <v-text-field
+                                label="Publish At"
+                                v-on="on"
+                                v-model="form.data.publish_at"
+                                :error-messages="form.errors.publish_at"
+                                :disabled="loading"
+                                readonly
+                        />
+                    </template>
+                    <v-date-picker
+                            v-model="form.data.publish_at"
+                            @input="publish_at_change()"
+                            color="primary"
+                            :disabled="loading"
+                    ></v-date-picker>
+                </v-menu>
+            </v-form>
+        </v-card-text>
+
+        <v-card-actions>
+            <v-btn
+                    color="primary lighten-1"
+                    @click.prevent="submit"
+                    :loading="loading"
+            >
+                Submit
+            </v-btn>
+        </v-card-actions>
+    </v-card>
 </template>
 
 <script>
@@ -105,17 +110,25 @@
                 default: () => new Post()
             },
         },
-        data: () => {
+        data: function () {
             return {
                 loading: false,
                 form: {
-                    valid: false,
-                    date_menu: false,
-                },
-                rules: {
-                    title: [
-                        v => !!v || 'Title is required'
-                    ],
+                    field: {
+                        publish_at: {
+                            date_menu: false,
+                        }
+                    },
+                    data: {
+                        title: this.post.title,
+                        body: this.post.body,
+                        publish_at: this.post.publish_at,
+                    },
+                    errors: {
+                        title: '',
+                        body: '',
+                        publish_at: '',
+                    },
                 },
                 extensions: [
                     History,
@@ -141,6 +154,10 @@
             }
         },
         methods: {
+            publish_at_change() {
+                this.form.field.publish_at.date_menu = false
+                this.form.errors.publish_at = ''
+            },
             submit() {
                 if (!this.$refs.form.validate())
                     return
@@ -150,10 +167,26 @@
                 this.action()
                     .then(() => {
                         this.$router.push('/admin/posts')
-                    }).finally(() => {
-                    this.loading = false
-                })
+                    })
+                    .catch((error) => {
+                        let errors = error.response.data.errors;
+
+                        for (let field in this.form.errors) {
+                            if (errors[field] !== undefined) {
+                                this.form.errors[field] = errors[field];
+                            }
+                        }
+                    })
+                    .finally(() => {
+                        this.loading = false
+                    })
             }
         }
     }
 </script>
+
+<style scoped>
+    .max-width {
+        width: 100%;
+    }
+</style>
