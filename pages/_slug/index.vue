@@ -32,11 +32,11 @@
     import Header from '@/components/layouts/blog/Header'
     import PreviewPost from '@/components/pages/blog/PreviewPost'
 
-    import {allPublishedPosts} from '@/mixins/compositions/Posts';
+    import { allPublishedPosts } from '@/mixins/compositions/Posts';
 
     export default {
         auth: false,
-        layout: 'blog',
+        layout: '_slug',
         components: {
             Banner,
             Header,

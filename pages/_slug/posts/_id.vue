@@ -41,14 +41,14 @@
 
     export default {
         auth: false,
-        layout: 'blog',
+        layout: '_slug',
         components: {
             Banner,
             ViewPost,
         },
         setup(props, context) {
             let id = context.root.$route.params.id;
-console.log(id);
+
             const post = showPublishedPost(id);
 
             return post;

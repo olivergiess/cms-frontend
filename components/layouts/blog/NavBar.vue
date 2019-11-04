@@ -41,27 +41,29 @@
 </template>
 
 <script>
-    import {mapGetters} from 'vuex'
-
     import User from '@/store/models/User'
 
     export default {
+        props: {
+            user: {
+                type: User,
+                default: () => new User,
+            }
+        },
         computed: {
-            ...mapGetters({
-                slug: 'currentSlug/get'
-            }),
-            user() {
-                let user = User.query().where('slug', this.slug).first();
-
-                return user ? user : new User();
-            },
             items() {
                 let items = [
                     {
-                        title: 'Blog',
-                        to: '/' + this.slug
+                        title: 'Home',
+                        to: '/'
                     }
                 ]
+
+                if (this.user.slug)
+                    items.push({
+                        title: 'Blog',
+                        to: '/' + this.user.slug
+                    });
 
                 if (this.$auth.loggedIn)
                     items.push({

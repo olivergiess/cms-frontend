@@ -2,9 +2,9 @@ import {Model} from '@vuex-orm/core'
 import Post from './Post'
 
 export default class User extends Model {
-  static entity = 'users'
+  static entity = 'users';
 
-  static primaryKey = 'id'
+  static primaryKey = 'id';
 
   static fields() {
     return {
@@ -15,14 +15,12 @@ export default class User extends Model {
       slug: this.string(''),
       posts: this.hasMany(Post, 'user_id')
     }
-  }
-
-
+  };
 
   static apiConfig = {
     actions: {
-      show(id) {
-        return this.get(`users/${id}`);
+      showBySlug(slug) {
+        return this.get(`users/${slug}`);
       },
     }
   };
