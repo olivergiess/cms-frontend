@@ -13,7 +13,7 @@
           <img
             class="border"
             src="https://avatars2.githubusercontent.com/u/7065004?s=460&v=4"
-            alt="Oliver Giess"
+            :alt="user.full_name"
           >
         </v-avatar>
       </v-col>
@@ -27,7 +27,7 @@
         <h3
           class="body-2 font-weight-light text-uppercase"
         >
-          BY: Oliver Giess
+          {{ user.full_name }}
         </h3>
       </v-col>
     </v-row>
@@ -35,7 +35,15 @@
 </template>
 
 <script>
-    export default {}
+  import User from '@/store/models/User'
+
+  export default {
+      props: {
+          user: {
+              type: Object,
+          }
+      }
+  }
 </script>
 
 <style scoped>

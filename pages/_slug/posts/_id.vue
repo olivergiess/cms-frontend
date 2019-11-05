@@ -1,10 +1,8 @@
 <template>
     <div>
-        <Banner
-            :background_image_src="post.cover_image"
-        />
+        <Banner :background_image_src="post.cover_image"/>
 
-        <Avatar/>
+        <Avatar :user="post.user"/>
 
         <v-container>
             <v-row
@@ -15,10 +13,27 @@
                     cols="6"
                 >
                     <h1
-                        class="display-3 text-center"
+                        class="display-3 font-weight-light text-center"
                     >
                         {{ post.title }}
                     </h1>
+                </v-col>
+            </v-row>
+            <v-row
+                align="start"
+                justify="center"
+            >
+                <v-col cols="auto">
+                    <h3
+                        class="overline text-uppercase grey--text"
+                    >
+                        PUBLISHED / {{ post.formatted_publish_at }}
+                    </h3>
+                    <h3
+                        class="overline text-uppercase grey--text"
+                    >
+                        EDITED &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ {{ post.formatted_updated_at }}
+                    </h3>
                 </v-col>
             </v-row>
             <v-row
@@ -40,7 +55,7 @@
     import Banner from '@/components/layouts/_slug/Banner'
     import ViewPost from '@/components/pages/blog/ViewPost'
 
-    import {showPost} from '@/mixins/compositions/Posts';
+    import {showPublishedPost} from '@/mixins/compositions/Posts';
 
     export default {
         auth: false,
@@ -51,9 +66,11 @@
             ViewPost,
         },
         setup(props, context) {
-            let id = context.root.$route.params.id;
+            const id = context.root.$route.params.id;
 
-            const post = showPost(id);
+            const slug = context.root.$route.params.slug;
+
+            const post = showPublishedPost(id, () => context.root.$router.push(`/${slug}`));
 
             return post;
         },
