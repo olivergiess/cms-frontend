@@ -34,7 +34,7 @@
 <script>
   import Avatar from '@/components/layouts/admin/Avatar'
   import NavDraw from '@/components/layouts/admin/NavDraw'
-  import Footer from '@/components/layouts/core/Footer'
+  import Footer from '@/components/layouts/general/Footer'
 
   export default {
     components: {

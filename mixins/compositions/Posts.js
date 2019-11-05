@@ -52,17 +52,19 @@ export function allPosts(id) {
 }
 
 export function allPublishedPosts(slug) {
-    return retrieveAll(
-        Post.api().allPublished(slug),
-        () => {
-            return Post.query()
-                .with('user')
-                .where((post) => {
-                    return Date.parse(post.publish_at) < Date.now();
-                })
-                .whereHas('user', (query) => {
-                    query.where('slug', slug);
-                })
-                .all()
+    const posts = computed(() => {
+        return Post.query()
+            .with('user')
+            .where((post) => {
+              return Date.parse(post.publish_at) < Date.now();
+            })
+            .whereHas('user', (query) => {
+              query.where('slug', slug);
+            })
+            .all()
     });
+
+    return {
+        posts
+    };
 }

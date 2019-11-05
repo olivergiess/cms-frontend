@@ -101,7 +101,7 @@
 </template>
 
 <script>
-    import LoadingBar from '~/components/LoadingBar';
+    import LoadingBar from '~/components/pages/general/LoadingBar';
 
     export default {
         components: {

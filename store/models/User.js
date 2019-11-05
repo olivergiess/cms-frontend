@@ -17,10 +17,17 @@ export default class User extends Model {
     }
   };
 
+  /**
+   * Get full name of the user.
+   */
+  get full_name() {
+    return `${this.first_name} ${this.last_name}`
+  }
+
   static apiConfig = {
     actions: {
       showBySlug(slug) {
-        return this.get(`users/${slug}`);
+        return this.get(`users/${slug}?expand=published`);
       },
     }
   };

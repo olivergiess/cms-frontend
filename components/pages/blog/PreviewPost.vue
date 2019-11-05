@@ -13,7 +13,7 @@
     >
       <v-img
         :class="{ 'on-hover' : hover }"
-        src="http://olivergiess.com/dynamic/images/full/5b811292ed9bf.jpeg"
+        :src="post.cover_image"
         height="25vh"
       >
         <v-fade-transition>

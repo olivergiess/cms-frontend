@@ -50,7 +50,7 @@
 </template>
 
 <script>
-    import LoadingBar from '~/components/LoadingBar'
+    import LoadingBar from '@/components/pages/general/LoadingBar'
 
     import {allPosts} from '@/mixins/compositions/Posts';
 

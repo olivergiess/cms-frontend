@@ -1,8 +1,10 @@
 <template>
     <div>
         <Banner
-            background_image_src="http://www.schintudesign.com/envato/exodus/assets/img/backs/back03.jpg"
+            :background_image_src="post.cover_image"
         />
+
+        <Avatar/>
 
         <v-container>
             <v-row
@@ -34,7 +36,8 @@
 </template>
 
 <script>
-    import Banner from '@/components/layouts/blog/Banner'
+    import Avatar from '@/components/layouts/_slug/Avatar'
+    import Banner from '@/components/layouts/_slug/Banner'
     import ViewPost from '@/components/pages/blog/ViewPost'
 
     import {showPublishedPost} from '@/mixins/compositions/Posts';
@@ -43,6 +46,7 @@
         auth: false,
         layout: '_slug',
         components: {
+            Avatar,
             Banner,
             ViewPost,
         },

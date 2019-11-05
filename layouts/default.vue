@@ -11,8 +11,8 @@
 </template>
 
 <script>
-    import NavBar from '@/components/layouts/blog/NavBar'
-    import Footer from '@/components/layouts/core/Footer'
+    import NavBar from '@/components/layouts/_slug/NavBar'
+    import Footer from '@/components/layouts/general/Footer'
 
     export default {
       components: {

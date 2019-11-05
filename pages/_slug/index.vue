@@ -28,11 +28,11 @@
 </template>
 
 <script>
-    import Banner from '@/components/layouts/blog/Banner'
-    import Header from '@/components/layouts/blog/Header'
+    import Banner from '@/components/layouts/_slug/Banner'
+    import Header from '@/components/layouts/_slug/Header'
     import PreviewPost from '@/components/pages/blog/PreviewPost'
 
-    import { allPublishedPosts } from '@/mixins/compositions/Posts';
+    import {allPublishedPosts} from '@/mixins/compositions/Posts';
 
     export default {
         auth: false,

@@ -25,6 +25,14 @@
                         :disabled="loading"
                 />
 
+              <v-text-field
+                        label="Cover Image"
+                        v-model="form.data.cover_image"
+                        @input="form.errors.cover_image = ''"
+                        :error-messages="form.errors.cover_image"
+                        :disabled="loading"
+                />
+
                 <v-input
                         class="pt-2 mt-1"
                         :error-messages="form.errors.body"
@@ -77,7 +85,7 @@
 </template>
 
 <script>
-    import LoadingBar from '~/components/LoadingBar'
+    import LoadingBar from '~/components/pages/general/LoadingBar'
     import {
         TiptapVuetify,
         Heading,
@@ -121,6 +129,7 @@
                     },
                     data: {
                         title: this.post.title,
+                        cover_image: this.post.cover_image,
                         body: this.post.body,
                         publish_at: this.post.publish_at,
                     },

@@ -10,6 +10,7 @@ export default class Post extends Model {
     return {
       id: this.increment(),
       title: this.string(''),
+      cover_image: this.string(''),
       body: this.string(''),
       publish_at: this.string(''),
       user: this.belongsTo(User, 'user_id'),
