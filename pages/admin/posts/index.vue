@@ -43,6 +43,13 @@
           >
             mdi-square-edit-outline
           </v-icon>
+          <v-icon
+            small
+            class="mr-2"
+            @click="preview(item)"
+          >
+            mdi-eye
+          </v-icon>
         </template>
       </v-data-table>
     </v-card>
@@ -76,6 +83,9 @@
             }
         },
         methods: {
+            preview(item) {
+                this.$router.push('/' + this.$auth.user.slug + '/posts/' + item.$id)
+            },
             edit(item) {
                 this.$router.push('/admin/posts/' + item.$id)
             },

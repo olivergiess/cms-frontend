@@ -40,7 +40,7 @@
     import Banner from '@/components/layouts/_slug/Banner'
     import ViewPost from '@/components/pages/blog/ViewPost'
 
-    import {showPublishedPost} from '@/mixins/compositions/Posts';
+    import {showPost} from '@/mixins/compositions/Posts';
 
     export default {
         auth: false,
@@ -53,7 +53,7 @@
         setup(props, context) {
             let id = context.root.$route.params.id;
 
-            const post = showPublishedPost(id);
+            const post = showPost(id);
 
             return post;
         },

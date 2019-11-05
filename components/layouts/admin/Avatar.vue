@@ -49,9 +49,12 @@
         },
         methods: {
             logout() {
+                const slug = this.$auth.user.slug;
+
                 this.$auth.logout()
                   .then(() => {
                       this.$store.dispatch('entities/deleteAll');
+                      this.$router.push('/' + slug);
                   })
             }
         }
