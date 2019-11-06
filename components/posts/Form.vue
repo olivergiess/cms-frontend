@@ -47,7 +47,7 @@
 
         <v-menu
           v-model="form.field.publish_at.date_menu"
-          :close-on-content-click="true"
+          :close-on-content-click="false"
           transition="scale-transition"
           offset-y
           min-width="290px"
