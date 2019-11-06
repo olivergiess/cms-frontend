@@ -1,38 +1,38 @@
 <template>
-    <div>
-        <Banner
-            background_image_src="http://www.schintudesign.com/envato/exodus/assets/img/backs/back03.jpg"
-        />
+  <div>
+    <Banner
+      background_image_src="http://www.schintudesign.com/envato/exodus/assets/img/backs/back03.jpg"
+    />
 
-        <Header
-            title="About"
-            sub_title=""
-        />
+    <Header
+      title="About"
+      sub_title=""
+    />
 
-        <v-container>
-            <v-row
-                align="start"
-                justify="center"
-            >
-                <v-col
-                    v-for="post in posts"
-                    :key="post.id"
-                    cols="12"
-                    md="5"
-                >
-                    <PreviewPost :post="post"/>
-                </v-col>
-            </v-row>
-        </v-container>
-    </div>
+    <v-container>
+      <v-row
+        align="start"
+        justify="center"
+      >
+        <v-col
+          v-for="post in posts"
+          :key="post.id"
+          cols="12"
+          md="5"
+        >
+          <PreviewPost :post="post"/>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
-    import Banner from '@/components/layouts/_slug/Banner'
+    import Banner from '@/components/layouts/_slug/ImageBanner'
     import Header from '@/components/layouts/_slug/Header'
-    import PreviewPost from '@/components/pages/blog/PreviewPost'
+    import PreviewPost from '@/components/posts/PreviewPost'
 
-    import { allPublishedPosts } from '@/mixins/compositions/Posts';
+    import {allPublishedPosts} from '@/mixins/compositions/Posts';
 
     export default {
         auth: false,

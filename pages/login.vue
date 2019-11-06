@@ -17,12 +17,12 @@
 </template>
 
 <script>
-  import LoginForm from '~/components/pages/blog/LoginForm'
+    import LoginForm from '@/components/auth/LoginForm'
 
-  export default {
-    auth: 'guest',
-    components: {
-      LoginForm
+    export default {
+        auth: 'guest',
+        components: {
+            LoginForm
+        }
     }
-  }
 </script>

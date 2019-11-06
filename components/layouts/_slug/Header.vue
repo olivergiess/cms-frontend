@@ -1,32 +1,32 @@
 <template>
-    <v-container>
-        <v-row
-            align="center"
-            justify="center"
+  <v-container>
+    <v-row
+      align="center"
+      justify="center"
+    >
+      <v-col cols="auto">
+        <h1
+          class="title font-weight-light text-uppercase"
         >
-            <v-col cols="auto">
-                <h1
-                    class="title font-weight-light text-uppercase"
-                >
-                    {{ title }}
-                </h1>
-                <v-divider></v-divider>
-            </v-col>
-        </v-row>
-        <v-row
-                no-gutters
-                align="center"
-                justify="center"
+          {{ title }}
+        </h1>
+        <v-divider></v-divider>
+      </v-col>
+    </v-row>
+    <v-row
+      no-gutters
+      align="center"
+      justify="center"
+    >
+      <v-col cols="auto">
+        <h2
+          class="display-1 font-weight-light"
         >
-            <v-col cols="auto">
-                <h2
-                    class="display-1 font-weight-light"
-                >
-                    {{ sub_title }}
-                </h2>
-            </v-col>
-        </v-row>
-    </v-container>
+          {{ sub_title }}
+        </h2>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

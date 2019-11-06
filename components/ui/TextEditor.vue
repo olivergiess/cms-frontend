@@ -32,7 +32,7 @@
             TiptapVuetify
         },
         props: {
-          value: String,
+            value: String,
         },
         data: () => ({
             extensions: [

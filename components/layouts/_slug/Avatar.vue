@@ -35,15 +35,15 @@
 </template>
 
 <script>
-  import User from '@/store/models/User'
+    import User from '@/mixins/models/User'
 
-  export default {
-      props: {
-          user: {
-              type: Object,
-          }
-      }
-  }
+    export default {
+        props: {
+            user: {
+                type: Object,
+            }
+        }
+    }
 </script>
 
 <style scoped>

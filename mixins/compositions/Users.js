@@ -1,25 +1,25 @@
 import {computed} from "@vue/composition-api";
-import User from '@/store/models/User'
+import User from '@/mixins/models/User'
 
 function retrieveBySlug(slug, retriever) {
-    const user = computed(() => {
-        let result = User.query()
-          .where('slug', slug)
-          .first();
+  const user = computed(() => {
+    let result = User.query()
+      .where('slug', slug)
+      .first();
 
-        if (!result)
-            retriever();
+    if (!result)
+      retriever();
 
-        return result
-            ? result
-            : new User
-    });
+    return result
+      ? result
+      : new User
+  });
 
-    return {
-        user
-    };
+  return {
+    user
+  };
 }
 
 export function showUserBySlug(slug, onError) {
-    return retrieveBySlug(slug, () => User.api().showBySlug(slug).catch(onError));
+  return retrieveBySlug(slug, () => User.api().showBySlug(slug).catch(onError));
 }

@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import User from '@/store/models/User'
+    import User from '@/mixins/models/User'
 
     export default {
         props: {

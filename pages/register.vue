@@ -17,12 +17,12 @@
 </template>
 
 <script>
-  import RegisterForm from '~/components/pages/blog/RegisterForm'
+    import RegisterForm from '@/components/auth/RegisterForm'
 
-  export default {
-    auth: 'guest',
-    components: {
-      RegisterForm
+    export default {
+        auth: 'guest',
+        components: {
+            RegisterForm
+        }
     }
-  }
 </script>

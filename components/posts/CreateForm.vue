@@ -1,6 +1,6 @@
 <script>
     import Form from './Form'
-    import Post from '@/store/models/Post'
+    import Post from '@/mixins/models/Post'
 
     export default {
         extends: Form,

@@ -1,15 +1,15 @@
-import { Model } from '@vuex-orm/core'
+import {Model} from '@vuex-orm/core'
 
 import moment from 'moment'
 
-import User from './User'
+import User from '@/mixins/models/User'
 
 export default class Post extends Model {
   static entity = 'posts'
 
   static primaryKey = 'id'
 
-  static fields () {
+  static fields() {
     return {
       id: this.increment(),
       title: this.string(''),

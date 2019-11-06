@@ -12,12 +12,12 @@
 
 <script>
     import NavBar from '@/components/layouts/_slug/NavBar'
-    import Footer from '@/components/layouts/general/Footer'
+    import Footer from '@/components/layouts/Footer'
 
     export default {
-      components: {
-        NavBar,
-        Footer
-      }
+        components: {
+            NavBar,
+            Footer
+        }
     }
 </script>

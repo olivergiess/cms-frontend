@@ -3,8 +3,8 @@ import VuexORM from '@vuex-orm/core'
 import VuexORMAxios from '@vuex-orm/plugin-axios'
 import {JsonAPIConverter} from '@/mixins/helpers/JsonAPIConverter'
 
-import User from '@/store/models/User'
-import Post from '@/store/models/Post'
+import User from '@/mixins/models/User'
+import Post from '@/mixins/models/Post'
 
 VuexORM.use(VuexORMAxios, {
     dataTransformer: function (response) {

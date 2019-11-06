@@ -7,9 +7,9 @@
       fixed
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
 
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title v-text="title"/>
 
       <div class="flex-grow-1"></div>
 
@@ -17,14 +17,7 @@
     </v-app-bar>
 
     <v-content>
-      <v-container>
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <nuxt />
-        </v-row>
-      </v-container>
+      <nuxt/>
     </v-content>
 
     <Footer/>
@@ -32,21 +25,21 @@
 </template>
 
 <script>
-  import Avatar from '@/components/layouts/admin/Avatar'
-  import NavDraw from '@/components/layouts/admin/NavDraw'
-  import Footer from '@/components/layouts/general/Footer'
+    import Avatar from '@/components/layouts/admin/Avatar'
+    import NavDraw from '@/components/layouts/admin/NavDraw'
+    import Footer from '@/components/layouts/Footer'
 
-  export default {
-    components: {
-        Avatar,
-        NavDraw,
-        Footer,
-    },
-    data () {
-      return {
-        drawer: false,
-        title: 'Blog'
-      }
+    export default {
+        components: {
+            Avatar,
+            NavDraw,
+            Footer,
+        },
+        data() {
+            return {
+                drawer: false,
+                title: 'Blog'
+            }
+        }
     }
-  }
 </script>
