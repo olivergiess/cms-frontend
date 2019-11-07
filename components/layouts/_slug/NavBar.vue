@@ -28,6 +28,7 @@
                 v-for="(item, i) in items"
                 :key="i"
                 :to="item.to"
+                exact
                 text
               >
                 {{item.title}}
@@ -57,7 +58,7 @@
                         title: 'Home',
                         to: '/'
                     }
-                ]
+                ];
 
                 if (this.user.slug)
                     items.push({

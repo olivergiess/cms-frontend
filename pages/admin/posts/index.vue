@@ -44,14 +44,14 @@
               <v-icon
                 small
                 class="mr-2"
-                @click="edit(item)"
+                @click="edit(item.id)"
               >
                 mdi-square-edit-outline
               </v-icon>
               <v-icon
                 small
                 class="mr-2"
-                @click="preview(item)"
+                @click="preview(item.id)"
               >
                 mdi-eye
               </v-icon>
@@ -66,19 +66,23 @@
 <script>
     import LoadingBar from '@/components/ui/LoadingBar'
 
-    import {allPosts} from '@/mixins/compositions/Posts';
+    import Post from '@/mixins/models/Post'
+    import {allPostsByUser} from '@/mixins/composables/UserPosts';
 
     export default {
         layout: 'admin',
         components: {
             LoadingBar
         },
+        async fetch() {
+            await Post.api().all();
+        },
         setup(props, context) {
-            let user_id = context.root.$auth.user.id;
+            const user_id = context.root.$auth.user.id;
 
-            const {postsLoading, posts} = allPosts(user_id);
+            const posts = allPostsByUser(user_id);
 
-            return {postsLoading, posts};
+            return posts;
         },
         data() {
             return {
@@ -90,14 +94,14 @@
             }
         },
         methods: {
-            preview(item) {
-                this.$router.push('/' + this.$auth.user.slug + '/posts/' + item.$id)
+            preview(id) {
+                this.$router.push(`/${this.$auth.user.slug}/posts/${id}`)
             },
-            edit(item) {
-                this.$router.push('/admin/posts/' + item.$id)
+            edit(id) {
+              this.$router.push(`/admin/posts/${id}`);
             },
             create() {
-                this.$router.push('/admin/posts/create')
+                this.$router.push(`/admin/posts/create`)
             }
         }
     }

@@ -18,19 +18,29 @@
 <script>
     import EditForm from '@/components/posts/EditForm'
 
-    import {showPost} from '@/mixins/compositions/Posts';
+    import Post from '@/mixins/models/Post'
+    import {showPostByUser} from '@/mixins/composables/UserPosts';
 
     export default {
         layout: 'admin',
         components: {
             EditForm
         },
+        async fetch({ route, redirect }) {
+            const id = route.params.id;
+
+            if(!Post.find(id))
+                await Post.api()
+                    .show(id)
+                    .catch(() => redirect('/admin/posts'));
+        },
         setup(props, context) {
-            let id = context.root.$route.params.id;
+            const id = context.root.$route.params.id;
+            const user_id = context.root.$auth.user.id;
 
-            const post = showPost(id);
+            const post = showPostByUser(user_id);
 
-            return post;
+            return post(id);
         },
     }
 </script>

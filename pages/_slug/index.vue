@@ -1,5 +1,7 @@
 <template>
   <div>
+    <NavBar :user="user"/>
+
     <Banner
       background_image_src="http://www.schintudesign.com/envato/exodus/assets/img/backs/back03.jpg"
     />
@@ -28,26 +30,54 @@
 </template>
 
 <script>
+    import NavBar from '@/components/layouts/_slug/NavBar'
     import Banner from '@/components/layouts/_slug/ImageBanner'
     import Header from '@/components/layouts/_slug/Header'
     import PreviewPost from '@/components/posts/PreviewPost'
 
-    import {allPublishedPosts} from '@/mixins/compositions/Posts';
+    import User from '@/mixins/models/User'
+    import Post from '@/mixins/models/Post'
 
     export default {
         auth: false,
         layout: '_slug',
         components: {
+            NavBar,
             Banner,
             Header,
             PreviewPost,
         },
-        setup(props, context) {
-            let slug = context.root.$route.params.slug;
-
-            const post = allPublishedPosts(slug);
-
-            return post;
+        async fetch({ route }) {
+            await User.api().showBySlug(route.params.slug);
         },
+        computed: {
+            posts() {
+                let slug = this.$route.params.slug;
+
+                const posts = Post.query()
+                    .with('user')
+                    .where((post) => {
+                        return Date.parse(post.publish_at) < Date.now();
+                    })
+                    .whereHas('user', (query) => {
+                        query.where('slug', slug);
+                    })
+                    .all();
+
+                return posts;
+            },
+            user () {
+                let slug = this.$route.params.slug;
+
+                let user = User
+                        .query()
+                        .where('slug', slug)
+                        .first();
+
+                return user
+                    ? user
+                    : new User;
+            }
+        }
     }
 </script>

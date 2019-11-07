@@ -38,10 +38,10 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/mixins/plugins/axios-refresh-interceptor.js',
-    '@/mixins/plugins/tip-tap-vuetify.js',
-    '@/mixins/plugins/vue-composition-api.js',
-    '@/mixins/plugins/vuex-orm-plugin-axios.js',
+    '@/plugins/axios-refresh-interceptor.js',
+    '@/plugins/tip-tap-vuetify.js',
+    '@/plugins/vue-composition-api.js',
+    '@/plugins/vuex-orm-plugin-axios.js',
   ],
 
   /*

@@ -1,8 +1,10 @@
 <template>
   <div>
+    <NavBar :user="user"/>
+
     <Banner :background_image_src="post.cover_image"/>
 
-    <Avatar :user="post.user"/>
+    <Avatar :user="user"/>
 
     <v-container>
       <v-row
@@ -51,29 +53,45 @@
 </template>
 
 <script>
+    import NavBar from '@/components/layouts/_slug/NavBar'
     import Avatar from '@/components/layouts/_slug/Avatar'
     import Banner from '@/components/layouts/_slug/ImageBanner'
     import ViewPost from '@/components/posts/ViewPost'
 
-    import {showPublishedPost} from '@/mixins/compositions/Posts';
+    import Post from '@/mixins/models/Post'
+
+    import {showPublishedPostForUser} from '@/mixins/composables/PublishedPosts'
+    import {showUserBySlug} from '@/mixins/composables/BlogUser'
 
     export default {
         auth: false,
         layout: '_slug',
         components: {
+            NavBar,
             Avatar,
             Banner,
             ViewPost,
         },
+        async fetch({ route, redirect }) {
+            const id = route.params.id;
+            const slug = route.params.slug;
+
+            await Post.api()
+                .showPublished(slug, id)
+                .catch(() => redirect(`/${slug}`));
+        },
         setup(props, context) {
             const id = context.root.$route.params.id;
-
             const slug = context.root.$route.params.slug;
 
-            const post = showPublishedPost(id, () => context.root.$router.push(`/${slug}`));
+            let post = showPublishedPostForUser(slug);
+            let user = showUserBySlug(slug);
 
-            return post;
-        },
+            return {
+              ...post(id),
+              ...user
+            };
+        }
     }
 </script>
 
