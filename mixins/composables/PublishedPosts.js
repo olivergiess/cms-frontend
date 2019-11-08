@@ -1,7 +1,18 @@
-import {computed} from '@vue/composition-api';
+import {ref, computed} from '@vue/composition-api';
 import Post from '@/mixins/models/Post';
 
 export const showPublishedPostForUser = slug => id => {
+    const loading = ref(false);
+
+    if(!Post.find(id)) {
+        loading.value = true;
+
+        Post.api()
+            .showPublished(slug, id)
+            .catch(() => redirect(`/${slug}`))
+            .finally(() => loading.value = false);
+    }
+
     const post = computed(() => {
         let post = Post.query()
             .whereHas('user', query =>
@@ -15,6 +26,7 @@ export const showPublishedPostForUser = slug => id => {
     });
 
     return {
+        loading,
         post
     };
 };

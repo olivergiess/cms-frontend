@@ -58,8 +58,6 @@
     import Banner from '@/components/layouts/_slug/ImageBanner'
     import ViewPost from '@/components/posts/ViewPost'
 
-    import Post from '@/mixins/models/Post'
-
     import {showPublishedPostForUser} from '@/mixins/composables/PublishedPosts'
     import {showUserBySlug} from '@/mixins/composables/BlogUser'
 
@@ -72,14 +70,6 @@
             Banner,
             ViewPost,
         },
-        async fetch({ route, redirect }) {
-            const id = route.params.id;
-            const slug = route.params.slug;
-
-            await Post.api()
-                .showPublished(slug, id)
-                .catch(() => redirect(`/${slug}`));
-        },
         setup(props, context) {
             const id = context.root.$route.params.id;
             const slug = context.root.$route.params.slug;
@@ -88,8 +78,8 @@
             let user = showUserBySlug(slug);
 
             return {
-              ...post(id),
-              ...user
+                ...user,
+                ...post(id),
             };
         }
     }

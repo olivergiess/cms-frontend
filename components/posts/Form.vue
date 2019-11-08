@@ -113,14 +113,17 @@
             TiptapVuetify
         },
         props: {
+            loading: {
+                type: Boolean,
+                default: false,
+            },
             post: {
-                type: Object,
+                type: Post,
                 default: () => new Post()
             },
         },
         data: function () {
             return {
-                loading: false,
                 form: {
                     field: {
                         publish_at: {

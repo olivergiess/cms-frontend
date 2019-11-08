@@ -35,10 +35,11 @@
     import Header from '@/components/layouts/_slug/Header'
     import PreviewPost from '@/components/posts/PreviewPost'
 
-    import User from '@/mixins/models/User'
-    import Post from '@/mixins/models/Post'
+    import {allPublishedPostsForUser} from '@/mixins/composables/PublishedPosts'
+    import {retrieveUser, showUserBySlug} from '@/mixins/composables/BlogUser'
 
     export default {
+        mode: 'ssr',
         auth: false,
         layout: '_slug',
         components: {
@@ -47,37 +48,18 @@
             Header,
             PreviewPost,
         },
-        async fetch({ route }) {
-            await User.api().showBySlug(route.params.slug);
-        },
-        computed: {
-            posts() {
-                let slug = this.$route.params.slug;
+        setup(props, context) {
+            const slug = context.root.$route.params.slug;
 
-                const posts = Post.query()
-                    .with('user')
-                    .where((post) => {
-                        return Date.parse(post.publish_at) < Date.now();
-                    })
-                    .whereHas('user', (query) => {
-                        query.where('slug', slug);
-                    })
-                    .all();
+            retrieveUser(slug);
 
-                return posts;
-            },
-            user () {
-                let slug = this.$route.params.slug;
+            let user = showUserBySlug(slug);
+            let posts = allPublishedPostsForUser(slug);
 
-                let user = User
-                        .query()
-                        .where('slug', slug)
-                        .first();
-
-                return user
-                    ? user
-                    : new User;
-            }
+            return {
+                ...user,
+                ...posts,
+            };
         }
     }
 </script>

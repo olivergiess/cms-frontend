@@ -32,7 +32,7 @@
           </v-toolbar>
 
           <loading-bar
-            v-if="postsLoading"
+            v-if="loading"
           />
 
           <v-data-table
@@ -73,9 +73,6 @@
         layout: 'admin',
         components: {
             LoadingBar
-        },
-        async fetch() {
-            await Post.api().all();
         },
         setup(props, context) {
             const user_id = context.root.$auth.user.id;
