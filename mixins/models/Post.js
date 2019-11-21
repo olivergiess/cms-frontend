@@ -2,7 +2,7 @@ import {Model} from '@vuex-orm/core'
 
 import moment from 'moment'
 
-import User from '@/mixins/models/User'
+import Blog from './Blog'
 
 export default class Post extends Model {
   static entity = 'posts';
@@ -17,8 +17,8 @@ export default class Post extends Model {
       body: this.string(''),
       publish_at: this.string(''),
       updated_at: this.string(''),
-      user: this.belongsTo(User, 'user_id'),
-      user_id: this.number(null)
+      blog_id: this.number(null),
+      blog: this.belongsTo(Blog, 'blog_id')
     }
   };
 

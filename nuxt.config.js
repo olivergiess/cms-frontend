@@ -38,9 +38,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/axios-refresh-interceptor.js',
     '@/plugins/tip-tap-vuetify.js',
-    '@/plugins/vue-composition-api.js',
     '@/plugins/vuex-orm-plugin-axios.js',
   ],
 
@@ -56,27 +54,33 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/auth',
   ],
 
   axios: {
-      prefix: '/api/',
-      host: 'cms-backend.test',
-      port: 80
+    proxy: true,
+    prefix: '/api/'
+  },
+
+  proxy: {
+    '/api/': { target: 'http://cms-backend.test' }
   },
 
   auth: {
     redirect: {
       login: '/login',
-      home: '/admin',
+      home: '/',
     },
     strategies: {
       local: {
+        _scheme: '~/app/customScheme.js',
         endpoints: {
-          login: { url: 'auth/login', method: 'post', propertyName: 'access_token' },
+          login: { url: 'auth/login', method: 'post', propertyName: 'data' },
           logout: { url: 'auth/logout', method: 'post' },
-          user: { url: 'user/current', method: 'get', propertyName: '' }
-        }
+          refresh: { url: 'auth/refresh', method: 'post', propertyName: 'data' },
+          user: { url: 'user/current?expand=blogs.posts', method: 'get', propertyName: 'data' },
+        },
       }
     }
   },
@@ -104,5 +108,9 @@ module.exports = {
     */
     extend (config, ctx) {
     }
+  },
+
+  server: {
+    port: 4000,
   }
 }

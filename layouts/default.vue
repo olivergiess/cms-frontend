@@ -1,7 +1,5 @@
 <template>
   <v-app>
-    <NavBar/>
-
     <v-content>
       <nuxt/>
     </v-content>
@@ -11,13 +9,11 @@
 </template>
 
 <script>
-    import NavBar from '@/components/layouts/_slug/NavBar'
-    import Footer from '@/components/layouts/Footer'
+import Footer from '@/components/ui/Footer'
 
-    export default {
-        components: {
-            NavBar,
-            Footer
-        }
-    }
+export default {
+  components: {
+    Footer
+  }
+}
 </script>

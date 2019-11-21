@@ -1,22 +1,41 @@
 export function JsonAPIConverter(response) {
-  const payload = response.data
-  let result = [];
+  const payload = response.data.data
 
-  if (payload instanceof Array) {
-    for (var key in payload) {
-      result.push(formatResource(payload[key]))
-    }
-  } else {
-    result.push(formatResource(payload));
-  }
-
-  return result;
+  return formatResources(payload)
 }
 
-function formatResource(resource) {
-  for (var relationship in resource.relationships) {
-    resource[relationship] = resource.relationships[relationship].data
+function formatResources (resources) {
+  if (resources instanceof Array) {
+    const output = []
+
+    for (var key in resources) {
+      output.push(formatRelationships(resources[key]))
+    }
+
+    return output
   }
 
-  return resource;
+  return formatRelationships(resources)
+}
+
+function formatRelationships (resource) {
+  const relations = resource.relationships
+
+  for (var relation in relations) {
+    let data = relations[relation].data
+
+    if (data instanceof Array) {
+      resource[relation] = []
+
+      for (var key in data) {
+        resource[relation].push(formatResources(data[key]))
+      }
+    }
+
+    resource[relation] = formatResources(data)
+  }
+
+  delete resource.relationships
+
+  return resource
 }

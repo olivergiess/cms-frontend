@@ -1,19 +1,24 @@
 import {Model} from '@vuex-orm/core'
 
-import Blog from './Blog'
+import User from './User'
+import Post from './Post'
 
-export default class User extends Model {
-  static entity = 'users';
+export default class Blog extends Model {
+  static entity = 'blogs';
 
   static primaryKey = 'id';
 
   static fields() {
     return {
       id: this.increment(),
-      first_name: this.string(''),
-      last_name: this.string(''),
-      email: this.string(''),
-      blogs: this.hasMany(Blog, 'user_id')
+      url_identifier: this.string(''),
+      name: this.string(''),
+      cover_image: this.string(''),
+      about: this.string(''),
+      created_at: this.string(''),
+      updated_at:this.string(''),
+      user: this.belongsTo(User, 'user_id'),
+      posts: this.hasMany(Post, 'blog_id')
     }
   };
 

@@ -57,47 +57,44 @@
 </template>
 
 <script>
-    import LoadingBar from '@/components/ui/LoadingBar';
+import LoadingBar from '@/components/ui/LoadingBar';
 
-    export default {
-        components: {
-            LoadingBar
-        },
-        data: () => ({
-            loading: false,
-            form: {
-                data: {
-                    email: 'test@test.com',
-                    password: 'password'
-                },
-                errors: {
-                    email: '',
-                    password: '',
-                },
-            },
-        }),
-        methods: {
-            login() {
-                this.loading = true;
+export default {
+  components: {
+    LoadingBar
+  },
+  data: () => ({
+    loading: false,
+    form: {
+      data: {
+        email: 'test@test.com',
+        password: 'password'
+      },
+      errors: {
+        email: '',
+        password: '',
+      },
+    },
+  }),
+  methods: {
+    login() {
+      this.loading = true;
 
-                this.$auth
-                    .login(this.form)
-                    .then(() => {
-                        this.$router.push('/admin');
-                    })
-                    .catch((error) => {
-                        let errors = error.response.data.errors;
+      this.$auth
+        .login(this.form)
+        .catch((error) => {
+          let errors = error.response.data.errors;
 
-                        for (let field in this.form.errors) {
-                            if (errors[field] !== undefined) {
-                                this.form.errors[field] = errors[field];
-                            }
-                        }
-                    })
-                    .finally(() => {
-                        this.loading = false;
-                    });
+          for (let field in this.form.errors) {
+            if (errors[field] !== undefined) {
+              this.form.errors[field] = errors[field];
             }
-        }
+          }
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     }
+  }
+}
 </script>

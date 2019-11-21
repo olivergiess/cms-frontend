@@ -178,7 +178,7 @@
 
                 this.action()
                     .then(() => {
-                        this.$router.push('/admin/posts')
+                        this.$router.push('/posts')
                     })
                     .catch((error) => {
                         let errors = error.response.data.errors;

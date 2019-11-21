@@ -4,6 +4,7 @@ import VuexORMAxios from '@vuex-orm/plugin-axios'
 import {JsonAPIConverter} from '@/mixins/helpers/JsonAPIConverter'
 
 import User from '@/mixins/models/User'
+import Blog from '@/mixins/models/Blog'
 import Post from '@/mixins/models/Post'
 
 VuexORM.use(VuexORMAxios, {
@@ -11,13 +12,14 @@ VuexORM.use(VuexORMAxios, {
         if(response.data === null)
             return;
 
-        return new JsonAPIConverter(response);
+        return JsonAPIConverter(response);
     }
 });
 
 const database = new VuexORM.Database();
 
 database.register(User);
+database.register(Blog);
 database.register(Post);
 
 export const plugins = [VuexORM.install(database)];

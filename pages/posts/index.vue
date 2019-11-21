@@ -31,10 +31,6 @@
             </v-btn>
           </v-toolbar>
 
-          <loading-bar
-            v-if="loading"
-          />
-
           <v-data-table
             :headers="headers"
             :items="posts"
@@ -64,42 +60,34 @@
 </template>
 
 <script>
-    import LoadingBar from '@/components/ui/LoadingBar'
+import Post from '@/mixins/models/Post'
 
-    import Post from '@/mixins/models/Post'
-    import {allPostsByUser} from '@/mixins/composables/UserPosts';
-
-    export default {
-        layout: 'admin',
-        components: {
-            LoadingBar
-        },
-        setup(props, context) {
-            const user_id = context.root.$auth.user.id;
-
-            const posts = allPostsByUser(user_id);
-
-            return posts;
-        },
-        data() {
-            return {
-                headers: [
-                    {text: 'Title', value: 'title'},
-                    {text: 'Publish At', value: 'publish_at'},
-                    {text: 'Actions', value: 'action', sortable: false},
-                ]
-            }
-        },
-        methods: {
-            preview(id) {
-                this.$router.push(`/${this.$auth.user.slug}/posts/${id}`)
-            },
-            edit(id) {
-              this.$router.push(`/admin/posts/${id}`);
-            },
-            create() {
-                this.$router.push(`/admin/posts/create`)
-            }
-        }
+export default {
+  layout: 'admin',
+  computed: {
+    posts () {
+      return Post.all()
     }
+  },
+  data() {
+    return {
+      headers: [
+        { text: 'Title', value: 'title' },
+        { text: 'Publish At', value: 'publish_at' },
+        { text: 'Actions', value: 'action', sortable: false },
+      ]
+    }
+  },
+  methods: {
+    preview(id) {
+      this.$router.push(`/${this.$auth.user.slug}/posts/${id}`)
+    },
+    edit(id) {
+      this.$router.push(`/posts/${id}`);
+    },
+    create() {
+      this.$router.push(`/posts/create`)
+    }
+  }
+}
 </script>

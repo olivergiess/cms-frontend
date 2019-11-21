@@ -25,21 +25,21 @@
 </template>
 
 <script>
-    import Avatar from '@/components/layouts/admin/Avatar'
-    import NavDraw from '@/components/layouts/admin/NavDraw'
-    import Footer from '@/components/layouts/Footer'
+import Avatar from '@/components/ui/Avatar'
+import NavDraw from '@/components/ui/NavDraw'
+import Footer from '@/components/ui/Footer'
 
-    export default {
-        components: {
-            Avatar,
-            NavDraw,
-            Footer,
-        },
-        data() {
-            return {
-                drawer: false,
-                title: 'Blog'
-            }
-        }
+export default {
+  components: {
+    Avatar,
+    NavDraw,
+    Footer,
+  },
+  data() {
+    return {
+      drawer: false,
+      title: 'Blog'
     }
+  }
+}
 </script>
