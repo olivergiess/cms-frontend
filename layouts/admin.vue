@@ -13,7 +13,7 @@
     </v-app-bar>
 
     <v-content>
-      <nuxt name="" />
+      <nuxt />
     </v-content>
 
     <Footer />

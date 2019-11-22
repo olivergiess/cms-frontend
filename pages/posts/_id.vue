@@ -1,14 +1,7 @@
 <template>
   <v-container>
-    <v-row
-      align="center"
-      justify="center"
-    >
-      <v-col
-        cols="12"
-        sm="10"
-        md="8"
-      >
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="10" md="8">
         <EditForm :post="post" />
       </v-col>
     </v-row>
@@ -17,7 +10,6 @@
 
 <script>
 import Post from '~/models/Post'
-
 import EditForm from '~/components/posts/EditForm'
 
 export default {
