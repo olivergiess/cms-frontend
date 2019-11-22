@@ -31,12 +31,12 @@
 </template>
 
 <script>
-    export default {
-        layout: 'admin',
-        computed: {
-            user() {
-                return this.$auth.user
-            }
-        }
+export default {
+  layout: 'admin',
+  computed: {
+    user () {
+      return this.$auth.user
     }
+  }
+}
 </script>

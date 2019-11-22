@@ -1,4 +1,4 @@
-import User from '~/mixins/models/User'
+import User from '~/models/User'
 
 const DEFAULTS = {
   tokenName: 'Authorization',
@@ -74,7 +74,6 @@ export default class CustomScheme {
   }
 
   _validateConfig () {
-
     if (!this.options.endpoints.login) {
       throw new Error('@nuxtjs/auth Custom Scheme requires the Login endpoint to be configured.')
     }
@@ -107,7 +106,7 @@ export default class CustomScheme {
     this.$auth.ctx.app.$axios.setHeader(this.options.tokenName, token)
   }
 
-  async _logoutLocally () {
+  _logoutLocally () {
     this._clearToken()
 
     return this.$auth.reset()

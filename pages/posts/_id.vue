@@ -9,16 +9,16 @@
         sm="10"
         md="8"
       >
-        <EditForm :post="post"/>
+        <EditForm :post="post" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import Post from '@/mixins/models/Post'
+import Post from '~/models/Post'
 
-import EditForm from '@/components/posts/EditForm'
+import EditForm from '~/components/posts/EditForm'
 
 export default {
   layout: 'admin',

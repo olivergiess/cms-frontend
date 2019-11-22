@@ -1,13 +1,12 @@
-import {Model} from '@vuex-orm/core'
-
+import { Model } from '@vuex-orm/core'
 import Blog from './Blog'
 
 export default class User extends Model {
-  static entity = 'users';
+  static entity = 'users'
 
-  static primaryKey = 'id';
+  static primaryKey = 'id'
 
-  static fields() {
+  static fields () {
     return {
       id: this.increment(),
       first_name: this.string(''),
@@ -15,23 +14,20 @@ export default class User extends Model {
       email: this.string(''),
       blogs: this.hasMany(Blog, 'user_id')
     }
-  };
+  }
 
   /**
    * Get full name of the user.
    */
-  get full_name() {
+  get fullName () {
     return `${this.first_name} ${this.last_name}`
   }
 
   static apiConfig = {
     actions: {
-      showBySlug(slug) {
-        return this.get(`users/${slug}?expand=published`);
-      },
       showCurrent () {
-        return this.get(`user/current?expand=blogs.posts`);
+        return this.get(`user/current?expand=blogs.posts`)
       }
     }
-  };
+  }
 }

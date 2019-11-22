@@ -1,41 +1,37 @@
 <template>
   <v-app>
-    <NavDraw :drawer="drawer"/>
+    <NavDraw :drawer="drawer" />
 
-    <v-app-bar
-      clipped-left
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
+    <v-app-bar app clipped-left fixed>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
-      <v-toolbar-title v-text="title"/>
+      <v-toolbar-title v-text="title" />
 
-      <div class="flex-grow-1"></div>
+      <div class="flex-grow-1" />
 
-      <Avatar/>
+      <Avatar />
     </v-app-bar>
 
     <v-content>
-      <nuxt/>
+      <nuxt name="" />
     </v-content>
 
-    <Footer/>
+    <Footer />
   </v-app>
 </template>
 
 <script>
-import Avatar from '@/components/ui/Avatar'
-import NavDraw from '@/components/ui/NavDraw'
-import Footer from '@/components/ui/Footer'
+import Avatar from '~/components/ui/Avatar'
+import NavDraw from '~/components/ui/NavDraw'
+import Footer from '~/components/ui/Footer'
 
 export default {
   components: {
     Avatar,
     NavDraw,
-    Footer,
+    Footer
   },
-  data() {
+  data () {
     return {
       drawer: false,
       title: 'Blog'

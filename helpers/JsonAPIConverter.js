@@ -1,14 +1,14 @@
-export function JsonAPIConverter(response) {
+export function JsonAPIConverter (response) {
   const payload = response.data.data
 
   return formatResources(payload)
 }
 
 function formatResources (resources) {
-  if (resources instanceof Array) {
+  if (Array.isArray(resources)) {
     const output = []
 
-    for (var key in resources) {
+    for (const key in resources) {
       output.push(formatRelationships(resources[key]))
     }
 
@@ -21,13 +21,13 @@ function formatResources (resources) {
 function formatRelationships (resource) {
   const relations = resource.relationships
 
-  for (var relation in relations) {
-    let data = relations[relation].data
+  for (const relation in relations) {
+    const data = relations[relation].data
 
-    if (data instanceof Array) {
+    if (Array.isArray(data)) {
       resource[relation] = []
 
-      for (var key in data) {
+      for (const key in data) {
         resource[relation].push(formatResources(data[key]))
       }
     }

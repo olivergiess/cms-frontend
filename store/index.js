@@ -1,27 +1,29 @@
+// eslint-disable-next-line no-unused-vars
 import Vuex from 'vuex'
 import VuexORM from '@vuex-orm/core'
 import VuexORMAxios from '@vuex-orm/plugin-axios'
-import {JsonAPIConverter} from '@/mixins/helpers/JsonAPIConverter'
+import { JsonAPIConverter } from '~/helpers/JsonAPIConverter'
 
-import User from '@/mixins/models/User'
-import Blog from '@/mixins/models/Blog'
-import Post from '@/mixins/models/Post'
+import User from '~/models/User'
+import Blog from '~/models/Blog'
+import Post from '~/models/Post'
 
 VuexORM.use(VuexORMAxios, {
-    dataTransformer: function (response) {
-        if(response.data === null)
-            return;
-
-        return JsonAPIConverter(response);
+  dataTransformer: (response) => {
+    if (response.data === null) {
+      return
     }
-});
 
-const database = new VuexORM.Database();
+    return JsonAPIConverter(response)
+  }
+})
 
-database.register(User);
-database.register(Blog);
-database.register(Post);
+const database = new VuexORM.Database()
 
-export const plugins = [VuexORM.install(database)];
+database.register(User)
+database.register(Blog)
+database.register(Post)
 
-export const strict = false;
+export const plugins = [VuexORM.install(database)]
+
+export const strict = false

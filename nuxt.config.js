@@ -1,8 +1,5 @@
-const colors = require('vuetify/es5/util/colors').default
-
-module.exports = {
+export default {
   mode: 'spa',
-
   /*
   ** Headers of the page
   */
@@ -18,7 +15,6 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
   /*
   ** Customize the progress-bar color
   */
@@ -27,50 +23,39 @@ module.exports = {
     color: 'rgb(25, 118, 210)',
     background: '#fff'
   },
-
-  /*
-  ** Global CSS
-  */
-  css: [
-  ],
-
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/tip-tap-vuetify.js',
-    '@/plugins/vuex-orm-plugin-axios.js',
+    '~/plugins/tip-tap-vuetify.js',
+    '~/plugins/vuex-orm-plugin-axios.js'
   ],
-
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxtjs/vuetify',
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify'
   ],
-
   /*
   ** Nuxt.js modules
   */
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
-    '@nuxtjs/auth',
+    '@nuxtjs/auth'
   ],
-
   axios: {
     proxy: true,
     prefix: '/api/'
   },
-
   proxy: {
     '/api/': { target: 'http://cms-backend.test' }
   },
-
   auth: {
     redirect: {
       login: '/login',
-      home: '/',
+      home: '/'
     },
     strategies: {
       local: {
@@ -79,38 +64,21 @@ module.exports = {
           login: { url: 'auth/login', method: 'post', propertyName: 'data' },
           logout: { url: 'auth/logout', method: 'post' },
           refresh: { url: 'auth/refresh', method: 'post', propertyName: 'data' },
-          user: { url: 'user/current?expand=blogs.posts', method: 'get', propertyName: 'data' },
-        },
+          user: { url: 'user/current?expand=blogs.posts', method: 'get', propertyName: 'data' }
+        }
       }
     }
   },
-
   router: {
     middleware: [
       'auth'
     ]
   },
-
   /*
   ** Vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
   */
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-  },
-
-  /*
-  ** Build configuration
-  */
-  build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
-  },
-
-  server: {
-    port: 4000,
+    customVariables: ['~/assets/variables.scss']
   }
 }

@@ -1,27 +1,13 @@
 <template>
-  <v-menu
-    transition="slide-y-transition"
-    bottom
-    left
-    offset-y
-  >
-    <template
-      v-slot:activator="{ on }"
-    >
-      <v-avatar
-        color="yellow darken-3"
-        class="white--text"
-        size="36"
-        v-on="on"
-      >
+  <v-menu bottom left offset-y transition="slide-y-transition">
+    <template v-slot:activator="{ on }">
+      <v-avatar v-on="on" class="white--text" color="yellow darken-3" size="36">
         {{ initials }}
       </v-avatar>
     </template>
 
     <v-list>
-      <v-list-item
-        @click="logout"
-      >
+      <v-list-item @click="logout">
         <v-list-item-title>Log Out</v-list-item-title>
       </v-list-item>
     </v-list>
@@ -38,15 +24,15 @@ export default {
     }
   },
   computed: {
-    user() {
+    user () {
       return this.$auth.user
     },
-    initials() {
+    initials () {
       return this.user.first_name[0] + this.user.last_name[0]
     }
   },
   methods: {
-    logout() {
+    logout () {
       this.$auth.logout()
         .then(() => this.$store.dispatch('entities/deleteAll'))
     }

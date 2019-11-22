@@ -1,5 +1,5 @@
-import {Model} from '@vuex-orm/core'
+import { Model } from '@vuex-orm/core'
 
-export default ({$axios}) => {
+export default ({ $axios }) => {
   Model.setAxios($axios)
 }

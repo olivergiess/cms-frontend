@@ -1,61 +1,64 @@
 <template>
   <div>
     <tiptap-vuetify
-      v-model="value"
       :extensions="extensions"
+      v-model="value"
     />
   </div>
 </template>
 
 <script>
-    import {
-        TiptapVuetify,
-        Heading,
-        Bold,
-        Italic,
-        Strike,
-        Underline,
-        Code,
-        Paragraph,
-        BulletList,
-        OrderedList,
-        ListItem,
-        Link,
-        Blockquote,
-        HardBreak,
-        HorizontalRule,
-        History
-    } from 'tiptap-vuetify'
+import {
+  TiptapVuetify,
+  Heading,
+  Bold,
+  Italic,
+  Strike,
+  Underline,
+  Code,
+  Paragraph,
+  BulletList,
+  OrderedList,
+  ListItem,
+  Link,
+  Blockquote,
+  HardBreak,
+  HorizontalRule,
+  History
+} from 'tiptap-vuetify'
 
-    export default {
-        components: {
-            TiptapVuetify
-        },
-        props: {
-            value: String,
-        },
-        data: () => ({
-            extensions: [
-                History,
-                Blockquote,
-                Link,
-                Underline,
-                Strike,
-                Italic,
-                ListItem,
-                BulletList,
-                OrderedList,
-                [Heading, {
-                    options: {
-                        levels: [1, 2, 3]
-                    }
-                }],
-                Bold,
-                Code,
-                HorizontalRule,
-                Paragraph,
-                HardBreak
-            ]
-        })
+export default {
+  components: {
+    TiptapVuetify
+  },
+  props: {
+    value: {
+      type: String,
+      default: ''
     }
+  },
+  data: () => ({
+    extensions: [
+      History,
+      Blockquote,
+      Link,
+      Underline,
+      Strike,
+      Italic,
+      ListItem,
+      BulletList,
+      OrderedList,
+      [Heading, {
+        options: {
+          levels: [1, 2, 3]
+        }
+      }],
+      Bold,
+      Code,
+      HorizontalRule,
+      Paragraph,
+      HardBreak
+    ]
+  })
+}
 </script>

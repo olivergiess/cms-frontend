@@ -10,19 +10,19 @@
         cols="12"
         md="5"
       >
-        <LoginForm/>
+        <LoginForm />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-    import LoginForm from '@/components/auth/LoginForm'
+import LoginForm from '~/components/auth/LoginForm'
 
-    export default {
-        auth: 'guest',
-        components: {
-            LoginForm
-        }
-    }
+export default {
+  auth: 'guest',
+  components: {
+    LoginForm
+  }
+}
 </script>

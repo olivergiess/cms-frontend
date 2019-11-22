@@ -1,83 +1,67 @@
 <template>
   <v-card class="elevation-12">
-    <v-toolbar
-      color="primary"
-      class="white--text"
-      flat
-    >
+    <v-toolbar class="white--text" color="primary" flat>
       <v-toolbar-title>{{ prefix }} Post</v-toolbar-title>
     </v-toolbar>
 
-    <loading-bar
-      v-if="loading"
-    />
+    <loading-bar v-if="loading" />
 
     <v-card-text>
-      <v-form
-        v-on:submit.prevent="submit"
-        ref="form"
-      >
+      <v-form ref="form" v-on:submit.prevent="submit">
         <v-text-field
-          label="Title"
-          v-model="form.data.title"
-          @input="form.errors.title = ''"
+          :disabled="loading"
           :error-messages="form.errors.title"
-          :disabled="loading"
+          @input="form.errors.title = ''"
+          v-model="form.data.title"
+          label="Title"
         />
 
         <v-text-field
-          label="Cover Image"
-          v-model="form.data.cover_image"
-          @input="form.errors.cover_image = ''"
-          :error-messages="form.errors.cover_image"
           :disabled="loading"
+          :error-messages="form.errors.cover_image"
+          @input="form.errors.cover_image = ''"
+          v-model="form.data.cover_image"
+          label="Cover Image"
         />
 
-        <v-input
-          class="pt-2 mt-1"
-          :error-messages="form.errors.body"
-        >
+        <v-input :error-messages="form.errors.body" class="pt-2 mt-1">
           <tiptap-vuetify
             :extensions="extensions"
-            v-model="form.data.body"
             @input="form.errors.body = ''"
+            v-model="form.data.body"
             class="max-width"
           />
         </v-input>
 
         <v-menu
-          v-model="form.field.publish_at.date_menu"
           :close-on-content-click="false"
-          transition="scale-transition"
-          offset-y
+          v-model="form.field.publish_at.date_menu"
           min-width="290px"
+          offset-y
+          transition="scale-transition"
         >
           <template v-slot:activator="{ on }">
             <v-text-field
-              label="Publish At"
-              v-on="on"
-              v-model="form.data.publish_at"
-              :error-messages="form.errors.publish_at"
               :disabled="loading"
+              :error-messages="form.errors.publish_at"
+              v-model="form.data.publish_at"
+              v-on="on"
+              label="Publish At"
               readonly
             />
           </template>
           <v-date-picker
-            v-model="form.data.publish_at"
-            @input="publish_at_change()"
-            color="primary"
             :disabled="loading"
-          ></v-date-picker>
+            @input="publish_at_change()"
+            v-model="form.data.publish_at"
+            color="primary"
+          />
         </v-menu>
       </v-form>
     </v-card-text>
 
     <v-card-actions>
-      <v-btn
-        color="primary lighten-1"
-        @click.prevent="submit"
-        :loading="loading"
-      >
+      <v-btn @click.prevent="submit" :loading="loading" color="primary lighten-1">
         Submit
       </v-btn>
     </v-card-actions>
@@ -85,116 +69,116 @@
 </template>
 
 <script>
-    import LoadingBar from '@/components/ui/LoadingBar'
-    import {
-        TiptapVuetify,
-        Heading,
-        Bold,
-        Italic,
-        Strike,
+import {
+  TiptapVuetify,
+  Heading,
+  Bold,
+  Italic,
+  Strike,
+  Underline,
+  Code,
+  Paragraph,
+  BulletList,
+  OrderedList,
+  ListItem,
+  Link,
+  Blockquote,
+  HardBreak,
+  HorizontalRule,
+  History
+} from 'tiptap-vuetify'
+import LoadingBar from '~/components/ui/LoadingBar'
+import Post from '~/models/Post'
+
+export default {
+  components: {
+    TiptapVuetify,
+    LoadingBar
+  },
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    post: {
+      type: Post,
+      default: () => new Post()
+    }
+  },
+  data: () => {
+    return {
+      form: {
+        field: {
+          publish_at: {
+            date_menu: false
+          }
+        },
+        data: {
+          title: this.post.title,
+          cover_image: this.post.cover_image,
+          body: this.post.body,
+          publish_at: this.post.publish_at
+        },
+        errors: {
+          title: '',
+          body: '',
+          publish_at: ''
+        }
+      },
+      extensions: [
+        History,
+        Blockquote,
+        Link,
         Underline,
-        Code,
-        Paragraph,
+        Strike,
+        Italic,
+        ListItem,
         BulletList,
         OrderedList,
-        ListItem,
-        Link,
-        Blockquote,
-        HardBreak,
+        [Heading, {
+          options: {
+            levels: [1, 2, 3]
+          }
+        }],
+        Bold,
+        Code,
         HorizontalRule,
-        History
-    } from 'tiptap-vuetify'
-
-    import Post from '@/mixins/models/Post'
-
-    export default {
-        components: {
-            LoadingBar,
-            TiptapVuetify
-        },
-        props: {
-            loading: {
-                type: Boolean,
-                default: false,
-            },
-            post: {
-                type: Post,
-                default: () => new Post()
-            },
-        },
-        data: function () {
-            return {
-                form: {
-                    field: {
-                        publish_at: {
-                            date_menu: false,
-                        }
-                    },
-                    data: {
-                        title: this.post.title,
-                        cover_image: this.post.cover_image,
-                        body: this.post.body,
-                        publish_at: this.post.publish_at,
-                    },
-                    errors: {
-                        title: '',
-                        body: '',
-                        publish_at: '',
-                    },
-                },
-                extensions: [
-                    History,
-                    Blockquote,
-                    Link,
-                    Underline,
-                    Strike,
-                    Italic,
-                    ListItem,
-                    BulletList,
-                    OrderedList,
-                    [Heading, {
-                        options: {
-                            levels: [1, 2, 3]
-                        }
-                    }],
-                    Bold,
-                    Code,
-                    HorizontalRule,
-                    Paragraph,
-                    HardBreak
-                ]
-            }
-        },
-        methods: {
-            publish_at_change() {
-                this.form.field.publish_at.date_menu = false
-                this.form.errors.publish_at = ''
-            },
-            submit() {
-                if (!this.$refs.form.validate())
-                    return
-
-                this.loading = true
-
-                this.action()
-                    .then(() => {
-                        this.$router.push('/posts')
-                    })
-                    .catch((error) => {
-                        let errors = error.response.data.errors;
-
-                        for (let field in this.form.errors) {
-                            if (errors[field] !== undefined) {
-                                this.form.errors[field] = errors[field];
-                            }
-                        }
-                    })
-                    .finally(() => {
-                        this.loading = false
-                    })
-            }
-        }
+        Paragraph,
+        HardBreak
+      ]
     }
+  },
+  methods: {
+    publish_at_change () {
+      this.form.field.publish_at.date_menu = false
+      this.form.errors.publish_at = ''
+    },
+    submit () {
+      if (!this.$refs.form.validate()) {
+        return
+      }
+
+      this.loading = true
+
+      this.action()
+        .then(() => {
+          this.$router.push('/posts')
+        })
+        .catch((error) => {
+          const errors = error.response.data.errors
+
+          for (const field in this.form.errors) {
+            if (errors[field] !== undefined) {
+              this.form.errors[field] = errors[field]
+            }
+          }
+        })
+        .finally(() => {
+          this.loading = false
+        })
+    }
+  }
+}
 </script>
 
 <style scoped>

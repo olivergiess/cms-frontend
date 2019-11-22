@@ -9,14 +9,14 @@
         sm="10"
         md="8"
       >
-        <CreateForm/>
+        <CreateForm />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import CreateForm from '@/components/posts/CreateForm'
+import CreateForm from '~/components/posts/CreateForm'
 
 export default {
   layout: 'admin',
