@@ -33,7 +33,12 @@ export default {
           to: '/'
         },
         {
-          icon: 'mdi-notebook',
+          icon: 'mdi-newspaper-variant-multiple',
+          title: 'Blogs',
+          to: '/blogs'
+        },
+        {
+          icon: 'mdi-typewriter',
           title: 'Posts',
           to: '/posts'
         }

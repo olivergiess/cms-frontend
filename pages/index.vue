@@ -1,13 +1,7 @@
 <template>
   <v-container>
-    <v-row
-      align="center"
-      justify="center"
-    >
-      <v-col
-        cols="11"
-        lg="8"
-      >
+    <v-row align="center" justify="center">
+      <v-col sm="12" md="10">
         <v-card class="elevation-12">
           <v-toolbar
             color="primary"

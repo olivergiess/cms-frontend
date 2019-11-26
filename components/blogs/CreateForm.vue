@@ -1,6 +1,6 @@
 <script>
-import Form from '~/components/posts/Form'
-import Post from '~/models/Post'
+import Form from '~/components/blogs/Form'
+import Blog from '~/models/Blog'
 
 export default {
   extends: Form,
@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     action () {
-      return Post.api().create(this.form.data)
+      return Blog.api().create(this.form.data)
     }
   }
 }

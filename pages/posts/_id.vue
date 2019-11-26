@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row align="center" justify="center">
-      <v-col cols="12" sm="10" md="8">
+      <v-col sm="12" md="10">
         <EditForm :post="post" />
       </v-col>
     </v-row>
@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Post from '~/models/Post'
 import EditForm from '~/components/posts/EditForm'
+import Post from '~/models/Post'
 
 export default {
   layout: 'admin',
@@ -23,6 +23,11 @@ export default {
     },
     post () {
       return Post.find(this.id)
+    }
+  },
+  created () {
+    if (this.post === null) {
+      this.$router.push('/posts')
     }
   }
 }

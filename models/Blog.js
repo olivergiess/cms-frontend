@@ -20,4 +20,15 @@ export default class Blog extends Model {
       posts: this.hasMany(Post, 'blog_id')
     }
   }
+
+  static apiConfig = {
+    actions: {
+      create (data) {
+        return this.post(`blogs`, data)
+      },
+      update (id, data) {
+        return this.put(`blogs/${id}`, data)
+      }
+    }
+  }
 }

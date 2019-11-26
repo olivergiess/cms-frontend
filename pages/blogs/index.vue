@@ -5,7 +5,7 @@
         <v-card>
           <v-toolbar class="white--text" color="primary" flat>
             <v-toolbar-title>
-              Posts
+              Blogs
             </v-toolbar-title>
 
             <div class="flex-grow-1" />
@@ -15,7 +15,7 @@
             </v-btn>
           </v-toolbar>
 
-          <v-data-table :headers="headers" :items="posts" :items-per-page="15">
+          <v-data-table :headers="headers" :items="blogs" :items-per-page="15">
             <template v-slot:item.action="{ item }">
               <v-icon @click="edit(item.id)" class="mr-2" small>
                 mdi-square-edit-outline
@@ -29,30 +29,30 @@
 </template>
 
 <script>
-import Post from '~/models/Post'
+import Blog from '~/models/Blog'
 
 export default {
   layout: 'admin',
   data () {
     return {
       headers: [
-        { text: 'Title', value: 'title' },
-        { text: 'Publish At', value: 'publish_at' },
+        { text: 'URL Identifier', value: 'url_identifier' },
+        { text: 'Name', value: 'name' },
         { text: 'Actions', value: 'action', sortable: false }
       ]
     }
   },
   computed: {
-    posts () {
-      return Post.all()
+    blogs () {
+      return Blog.all()
     }
   },
   methods: {
     edit (id) {
-      this.$router.push(`/posts/${id}`)
+      this.$router.push(`/blogs/${id}`)
     },
     create () {
-      this.$router.push(`/posts/create`)
+      this.$router.push(`/blogs/create`)
     }
   }
 }

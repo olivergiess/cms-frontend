@@ -1,5 +1,5 @@
 <script>
-import Form from './Form'
+import Form from '~/components/posts/Form'
 import Post from '~/models/Post'
 
 export default {

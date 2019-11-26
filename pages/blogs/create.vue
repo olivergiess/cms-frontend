@@ -9,18 +9,12 @@
 </template>
 
 <script>
-import CreateForm from '~/components/posts/CreateForm'
-import Blog from '~/models/Blog'
+import CreateForm from '~/components/blogs/CreateForm'
 
 export default {
   layout: 'admin',
   components: {
     CreateForm
-  },
-  beforeCreate () {
-    if (Blog.all().length < 1) {
-      this.$router.push('/blogs')
-    }
   }
 }
 </script>
