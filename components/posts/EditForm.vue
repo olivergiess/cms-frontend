@@ -4,7 +4,8 @@ import Post from '~/models/Post'
 
 export default {
   extends: Form,
-  data: () => {
+  // eslint-disable-next-line object-shorthand
+  data: function () {
     return {
       prefix: 'Edit'
     }

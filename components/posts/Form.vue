@@ -105,7 +105,8 @@ export default {
       default: () => new Post()
     }
   },
-  data: () => {
+  // eslint-disable-next-line object-shorthand
+  data: function () {
     return {
       form: {
         field: {

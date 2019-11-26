@@ -30,16 +30,6 @@
 
         <v-text-field
           :disabled="loading"
-          :error-messages="form.errors.slug"
-          @input="form.errors.slug = ''"
-          v-model="form.data.slug"
-          hint="This will form part of your Blog's Slug"
-          label="Slug"
-          type="text"
-        />
-
-        <v-text-field
-          :disabled="loading"
           :error-messages="form.errors.email"
           @input="form.errors.email = ''"
           v-model="form.data.email"
@@ -97,7 +87,6 @@ export default {
       data: {
         first_name: '',
         last_name: '',
-        slug: '',
         email: '',
         email_confirmation: '',
         password: '',
@@ -106,7 +95,6 @@ export default {
       errors: {
         first_name: '',
         last_name: '',
-        slug: '',
         email: '',
         email_confirmation: '',
         password: '',

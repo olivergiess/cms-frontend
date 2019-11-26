@@ -42,15 +42,12 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
     '@nuxtjs/auth'
   ],
   axios: {
-    proxy: true,
-    prefix: '/api/'
-  },
-  proxy: {
-    '/api/': { target: 'http://cms-backend.test' }
+    prefix: '/api/',
+    host: 'cms.olivergiess.com',
+    port: 80
   },
   auth: {
     redirect: {

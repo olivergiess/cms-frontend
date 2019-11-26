@@ -52,8 +52,8 @@ export default {
     loading: false,
     form: {
       data: {
-        email: 'test@test.com',
-        password: 'password'
+        email: '',
+        password: ''
       },
       errors: {
         email: '',
