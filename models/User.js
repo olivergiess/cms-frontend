@@ -27,6 +27,9 @@ export default class User extends Model {
     actions: {
       showCurrent () {
         return this.get(`user/current?expand=blogs.posts`)
+      },
+      create (data) {
+        return this.post(`/users`, data)
       }
     }
   }

@@ -1,88 +1,74 @@
 <template>
-  <v-card class="elevation-12">
-    <v-toolbar color="primary" dark flat>
-      <v-toolbar-title>
-        Register
-      </v-toolbar-title>
-    </v-toolbar>
+  <Form
+    title="Register"
+    :submit="submit"
+    :loading="loading"
+  >
+    <v-text-field
+      :disabled="loading"
+      :error-messages="form.errors.first_name"
+      @input="form.errors.first_name = ''"
+      v-model="form.data.first_name"
+      label="First Name"
+      type="text"
+    />
 
-    <loading-bar v-if="loading" />
+    <v-text-field
+      :disabled="loading"
+      :error-messages="form.errors.last_name"
+      @input="form.errors.last_name = ''"
+      v-model="form.data.last_name"
+      label="Last Name"
+      type="text"
+    />
 
-    <v-card-text>
-      <v-form ref="form" v-on:submit.prevent="register">
-        <v-text-field
-          :disabled="loading"
-          :error-messages="form.errors.first_name"
-          @input="form.errors.first_name = ''"
-          v-model="form.data.first_name"
-          label="First Name"
-          type="text"
-        />
+    <v-text-field
+      :disabled="loading"
+      :error-messages="form.errors.email"
+      @input="form.errors.email = ''"
+      v-model="form.data.email"
+      label="Email"
+      type="email"
+    />
 
-        <v-text-field
-          :disabled="loading"
-          :error-messages="form.errors.last_name"
-          @input="form.errors.last_name = ''"
-          v-model="form.data.last_name"
-          label="Last Name"
-          type="text"
-        />
+    <v-text-field
+      :disabled="loading"
+      :error-messages="form.errors.email_confirmation"
+      @input="form.errors.email_confirmation = ''"
+      v-model="form.data.email_confirmation"
+      label="Confirm Email"
+      type="text"
+    />
 
-        <v-text-field
-          :disabled="loading"
-          :error-messages="form.errors.email"
-          @input="form.errors.email = ''"
-          v-model="form.data.email"
-          label="Email"
-          type="email"
-        />
+    <v-text-field
+      :disabled="loading"
+      :error-messages="form.errors.password"
+      @input="form.errors.password = ''"
+      v-model="form.data.password"
+      hint="At least 8 characters"
+      label="Password"
+      type="password"
+    />
 
-        <v-text-field
-          :disabled="loading"
-          :error-messages="form.errors.email_confirmation"
-          @input="form.errors.email_confirmation = ''"
-          v-model="form.data.email_confirmation"
-          label="Confirm Email"
-          type="text"
-        />
-
-        <v-text-field
-          :disabled="loading"
-          :error-messages="form.errors.password"
-          @input="form.errors.password = ''"
-          v-model="form.data.password"
-          hint="At least 8 characters"
-          label="Password"
-          type="password"
-        />
-
-        <v-text-field
-          :disabled="loading"
-          :error-messages="form.errors.password_confirmation"
-          @input="form.errors.password_confirmation = ''"
-          v-model="form.data.password_confirmation"
-          label="Confirm Password"
-          type="password"
-        />
-      </v-form>
-    </v-card-text>
-    <v-card-actions>
-      <v-btn :loading="loading" v-on:click.prevent="register" color="primary" type="submit">
-        Submit
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+    <v-text-field
+      :disabled="loading"
+      :error-messages="form.errors.password_confirmation"
+      @input="form.errors.password_confirmation = ''"
+      v-model="form.data.password_confirmation"
+      label="Confirm Password"
+      type="password"
+    />
+  </Form>
 </template>
 
 <script>
-import LoadingBar from '~/components/ui/LoadingBar'
+import BaseForm from '~/components/ui/forms/BaseForm'
+import User from '~/models/User'
 
 export default {
-  components: {
-    LoadingBar
-  },
+  extends: BaseForm,
   data: () => ({
-    loading: false,
+    redirectTo: '/login',
     form: {
       data: {
         first_name: '',
@@ -103,30 +89,8 @@ export default {
     }
   }),
   methods: {
-    register () {
-      if (!this.$refs.form.validate()) {
-        return
-      }
-
-      this.loading = true
-
-      this.$axios
-        .post('/users', this.form.data)
-        .then(() => {
-          this.$router.push('/')
-        })
-        .catch((error) => {
-          const errors = error.response.data.errors
-
-          for (const field in this.form.errors) {
-            if (errors[field] !== undefined) {
-              this.form.errors[field] = errors[field]
-            }
-          }
-        })
-        .finally(() => {
-          this.loading = false
-        })
+    action () {
+      return User.api().create(this.form.data)
     }
   }
 }
