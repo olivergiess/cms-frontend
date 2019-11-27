@@ -1,5 +1,5 @@
 <template>
-  <Form
+  <FormCard
     :title="'Login'"
     :submit="submit"
     :loading="loading"
@@ -32,7 +32,7 @@
         Register
       </v-btn>
     </template>
-  </Form>
+  </FormCard>
 </template>
 
 <script>

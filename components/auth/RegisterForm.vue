@@ -1,5 +1,5 @@
 <template>
-  <Form
+  <FormCard
     :title="'Register'"
     :submit="submit"
     :loading="loading"
@@ -58,7 +58,7 @@
       label="Confirm Password"
       type="password"
     />
-  </Form>
+  </FormCard>
 </template>
 
 <script>
