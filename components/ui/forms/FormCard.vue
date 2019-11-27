@@ -6,19 +6,19 @@
 
     <loading-bar v-if="loading" />
 
-    <v-card-text>
-      <v-form ref="form" v-on:submit.prevent="submit">
+    <v-form ref="form" @submit.prevent="submit">
+      <v-card-text>
         <slot />
-      </v-form>
-    </v-card-text>
+      </v-card-text>
 
-    <v-card-actions>
-      <slot name="actions">
-        <v-btn @click.prevent="submit" :loading="loading" color="primary lighten-1">
-          Submit
-        </v-btn>
-      </slot>
-    </v-card-actions>
+      <v-card-actions>
+        <slot name="actions">
+          <v-btn :loading="loading" color="primary lighten-1" type="submit">
+            Submit
+          </v-btn>
+        </slot>
+      </v-card-actions>
+    </v-form>
   </v-card>
 </template>
 
