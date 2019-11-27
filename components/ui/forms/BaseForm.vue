@@ -1,9 +1,9 @@
 <script>
-import Form from '~/components/ui/forms/Form'
+import FormCard from '~/components/ui/forms/FormCard'
 
 export default {
   components: {
-    Form
+    FormCard
   },
   data () {
     return {

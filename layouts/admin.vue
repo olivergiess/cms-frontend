@@ -13,7 +13,13 @@
     </v-app-bar>
 
     <v-content>
-      <nuxt />
+      <v-container>
+        <v-row align="center" justify="center">
+          <v-col sm="12" md="10">
+            <nuxt />
+          </v-col>
+        </v-row>
+      </v-container>
     </v-content>
 
     <Footer />

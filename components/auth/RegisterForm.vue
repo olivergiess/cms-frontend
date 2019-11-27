@@ -1,6 +1,6 @@
 <template>
   <Form
-    title="Register"
+    :title="'Register'"
     :submit="submit"
     :loading="loading"
   >

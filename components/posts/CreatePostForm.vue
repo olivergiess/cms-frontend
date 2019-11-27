@@ -1,9 +1,9 @@
 <script>
-import Form from '~/components/posts/Form'
+import PostForm from '~/components/posts/PostForm'
 import Post from '~/models/Post'
 
 export default {
-  extends: Form,
+  extends: PostForm,
   data: () => {
     return {
       prefix: 'Create'

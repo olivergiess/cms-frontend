@@ -1,21 +1,15 @@
 <template>
-  <v-container>
-    <v-row align="center" justify="center">
-      <v-col sm="12" md="10">
-        <CreateForm />
-      </v-col>
-    </v-row>
-  </v-container>
+  <CreatePostForm />
 </template>
 
 <script>
-import CreateForm from '~/components/posts/CreateForm'
+import CreatePostForm from '~/components/posts/CreatePostForm'
 import Blog from '~/models/Blog'
 
 export default {
   layout: 'admin',
   components: {
-    CreateForm
+    CreatePostForm
   },
   beforeCreate () {
     if (Blog.all().length < 1) {

@@ -1,21 +1,15 @@
 <template>
-  <v-container>
-    <v-row align="center" justify="center">
-      <v-col sm="12" md="10">
-        <EditForm :blog="blog" />
-      </v-col>
-    </v-row>
-  </v-container>
+  <EditBlogForm :blog="blog" />
 </template>
 
 <script>
-import EditForm from '~/components/blogs/EditForm'
+import EditBlogForm from '~/components/blogs/EditBlogForm'
 import Blog from '~/models/Blog'
 
 export default {
   layout: 'admin',
   components: {
-    EditForm
+    EditBlogForm
   },
   computed: {
     id () {

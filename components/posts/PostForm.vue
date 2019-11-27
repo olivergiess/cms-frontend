@@ -1,13 +1,13 @@
 <template>
-  <Form
+  <FormCard
     :title="`${prefix} Post`"
     :submit="submit"
     :loading="loading"
   >
     <v-select
       :items="blogs"
-      item-value="id"
-      item-text="name"
+      :item-value="'id'"
+      :item-text="'name'"
       :disabled="loading"
       :error-messages="form.errors.blog_id"
       @input="form.errors.blog_id = ''"
@@ -61,20 +61,20 @@
         color="primary"
       />
     </v-menu>
-  </Form>
+  </FormCard>
 </template>
 
 <script>
-import BaseForm from '~/components/ui/forms/BaseForm'
 import TextEditor from '~/components/ui/forms/TextEditor'
+import BaseForm from '~/components/ui/forms/BaseForm'
 import Post from '~/models/Post'
 import Blog from '~/models/Blog'
 
 export default {
-  extends: BaseForm,
   components: {
     TextEditor
   },
+  extends: BaseForm,
   props: {
     post: {
       type: Post,

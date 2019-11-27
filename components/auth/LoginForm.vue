@@ -1,6 +1,6 @@
 <template>
   <Form
-    title="Login"
+    :title="'Login'"
     :submit="submit"
     :loading="loading"
   >
@@ -26,9 +26,9 @@
         Login
       </v-btn>
 
-      <v-spacer/>
+      <v-spacer />
 
-      <v-btn :to="'/register'" color="primary">
+      <v-btn :disabled="loading" :to="'/register'" color="primary">
         Register
       </v-btn>
     </template>
@@ -54,7 +54,7 @@ export default {
   }),
   methods: {
     action () {
-      return this.$auth.login(this.form.data)
+      return this.$auth.login({ data: this.form.data })
     }
   }
 }

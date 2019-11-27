@@ -1,9 +1,9 @@
 <script>
-import Form from '~/components/blogs/Form'
+import BlogForm from '~/components/blogs/BlogForm'
 import Blog from '~/models/Blog'
 
 export default {
-  extends: Form,
+  extends: BlogForm,
   data: () => {
     return {
       prefix: 'Edit'

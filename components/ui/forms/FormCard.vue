@@ -4,7 +4,7 @@
       <v-toolbar-title>{{ title }}</v-toolbar-title>
     </v-toolbar>
 
-    <loading-bar v-if="loading"/>
+    <loading-bar v-if="loading" />
 
     <v-card-text>
       <v-form ref="form" v-on:submit.prevent="submit">

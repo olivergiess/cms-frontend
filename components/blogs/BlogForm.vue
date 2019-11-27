@@ -1,5 +1,5 @@
 <template>
-  <Form
+  <FormCard
     :title="`${prefix} Blog`"
     :submit="submit"
     :loading="loading"
@@ -30,19 +30,19 @@
       @input="form.errors.about = []"
       v-model="form.data.about"
     />
-  </Form>
+  </FormCard>
 </template>
 
 <script>
-import BaseForm from '~/components/ui/forms/BaseForm'
 import TextEditor from '~/components/ui/forms/TextEditor'
+import BaseForm from '~/components/ui/forms/BaseForm'
 import Blog from '~/models/Post'
 
 export default {
-  extends: BaseForm,
   components: {
     TextEditor
   },
+  extends: BaseForm,
   props: {
     blog: {
       type: Blog,

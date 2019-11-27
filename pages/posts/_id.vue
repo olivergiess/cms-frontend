@@ -1,21 +1,15 @@
 <template>
-  <v-container>
-    <v-row align="center" justify="center">
-      <v-col sm="12" md="10">
-        <EditForm :post="post" />
-      </v-col>
-    </v-row>
-  </v-container>
+  <EditPostForm :post="post" />
 </template>
 
 <script>
-import EditForm from '~/components/posts/EditForm'
+import EditPostForm from '~/components/posts/EditPostForm'
 import Post from '~/models/Post'
 
 export default {
   layout: 'admin',
   components: {
-    EditForm
+    EditPostForm
   },
   computed: {
     id () {
