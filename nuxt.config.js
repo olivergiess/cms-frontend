@@ -44,9 +44,9 @@ export default {
     '@nuxtjs/auth'
   ],
   axios: {
-    prefix: '/api/',
+    https: true,
     host: 'cms.olivergiess.com',
-    port: 80
+    prefix: '/api/'
   },
   auth: {
     redirect: {
