@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
+      {{ error.message ? error.message : pageNotFound }}
     </h1>
     <h1 v-else>
-      {{ otherError }}
+      {{ error.message ? error.message : otherError }}
     </h1>
     <NuxtLink to="/">
       Home page
@@ -14,7 +14,6 @@
 
 <script>
 export default {
-  layout: 'empty',
   props: {
     error: {
       type: Object,

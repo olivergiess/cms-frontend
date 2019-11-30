@@ -1,12 +1,8 @@
 <template>
-  <v-card class="elevation-12">
-    <v-toolbar
-      color="primary"
-      class="white--text"
-      flat
-    >
+  <app-card>
+    <template v-slot:toolbar>
       <v-toolbar-title>Welcome, {{ user.first_name }}</v-toolbar-title>
-    </v-toolbar>
+    </template>
 
     <v-card-text>
       Welcome to your Blog, from here you can administer and monitor how it is performing!
@@ -15,12 +11,17 @@
       clicking
       the three bars in the top right.
     </v-card-text>
-  </v-card>
+  </app-card>
 </template>
 
 <script>
+import AppCard from '~/components/ui/AppCard'
+
 export default {
   layout: 'admin',
+  components: {
+    AppCard
+  },
   computed: {
     user () {
       return this.$auth.user

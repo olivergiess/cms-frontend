@@ -2,12 +2,12 @@
   <v-container fill-height>
     <v-row align="start" justify="center">
       <v-col cols="12" md="5">
-        <v-card elevation="2">
-          <v-toolbar color="primary" class="white--text" flat>
+        <app-card>
+          <template v-slot:toolbar>
             <v-toolbar-title>
               Email Verification
             </v-toolbar-title>
-          </v-toolbar>
+          </template>
 
           <v-card-text>
             <span v-if="loading">
@@ -22,15 +22,20 @@
               </span>
             </span>
           </v-card-text>
-        </v-card>
+        </app-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import AppCard from '~/components/ui/AppCard'
+
 export default {
   auth: 'guest',
+  components: {
+    AppCard
+  },
   data: () => {
     return {
       error: false,
@@ -40,7 +45,7 @@ export default {
   created () {
     const id = this.$route.params.id
     const token = this.$route.params.token
-    console.log(token)
+
     this.$axios.put(`/users/${id}/verify`, { token })
       .catch(() => { this.error = true })
       .finally(() => { this.loading = false })

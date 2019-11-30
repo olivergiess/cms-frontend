@@ -1,6 +1,6 @@
 <template>
-  <v-card>
-    <v-toolbar class="white--text" color="primary" flat>
+  <app-card>
+    <template v-slot:toolbar>
       <v-toolbar-title>
         Posts
       </v-toolbar-title>
@@ -10,7 +10,7 @@
       <v-btn @click.prevent="create" color="primary lighten-1" fab small>
         <v-icon>mdi-plus</v-icon>
       </v-btn>
-    </v-toolbar>
+    </template>
 
     <v-data-table :headers="headers" :items="posts" :items-per-page="15">
       <template v-slot:item.action="{ item }">
@@ -19,14 +19,18 @@
         </v-icon>
       </template>
     </v-data-table>
-  </v-card>
+  </app-card>
 </template>
 
 <script>
+import AppCard from '~/components/ui/AppCard'
 import Post from '~/models/Post'
 
 export default {
   layout: 'admin',
+  components: {
+    AppCard
+  },
   data () {
     return {
       headers: [

@@ -1,5 +1,5 @@
 <template>
-  <FormCard
+  <app-form
     :title="'Register'"
     :submit="submit"
     :loading="loading"
@@ -58,11 +58,11 @@
       label="Confirm Password"
       type="password"
     />
-  </FormCard>
+  </app-form>
 </template>
 
 <script>
-import BaseForm from '~/components/ui/forms/BaseForm'
+import BaseForm from '~/components/base/BaseForm'
 import User from '~/models/User'
 
 export default {

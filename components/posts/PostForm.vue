@@ -1,5 +1,5 @@
 <template>
-  <FormCard
+  <app-form
     :title="`${prefix} Post`"
     :submit="submit"
     :loading="loading"
@@ -31,7 +31,7 @@
       label="Cover Image"
     />
 
-    <TextEditor
+    <app-text-editor
       :errorMessages="form.errors.body"
       @input="form.errors.body = []"
       v-model="form.data.body"
@@ -61,18 +61,18 @@
         color="primary"
       />
     </v-menu>
-  </FormCard>
+  </app-form>
 </template>
 
 <script>
-import TextEditor from '~/components/ui/forms/TextEditor'
-import BaseForm from '~/components/ui/forms/BaseForm'
+import AppTextEditor from '~/components/ui/forms/AppTextEditor'
+import BaseForm from '~/components/base/BaseForm'
 import Post from '~/models/Post'
 import Blog from '~/models/Blog'
 
 export default {
   components: {
-    TextEditor
+    AppTextEditor
   },
   extends: BaseForm,
   props: {

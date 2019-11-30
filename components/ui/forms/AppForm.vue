@@ -1,10 +1,10 @@
 <template>
-  <v-card class="elevation-12">
-    <v-toolbar class="white--text" color="primary" flat>
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
-    </v-toolbar>
-
-    <loading-bar v-if="loading" />
+  <app-card :loading="loading">
+    <template v-slot:toolbar>
+      <v-toolbar-title>
+        {{ title }}
+      </v-toolbar-title>
+    </template>
 
     <v-form ref="form" @submit.prevent="submit">
       <v-card-text>
@@ -13,21 +13,21 @@
 
       <v-card-actions>
         <slot name="actions">
-          <v-btn :loading="loading" color="primary lighten-1" type="submit">
+          <v-btn :loading="loading" color="primary" tile type="submit">
             Submit
           </v-btn>
         </slot>
       </v-card-actions>
     </v-form>
-  </v-card>
+  </app-card>
 </template>
 
 <script>
-import LoadingBar from '~/components/ui/LoadingBar'
+import AppCard from '~/components/ui/AppCard'
 
 export default {
   components: {
-    LoadingBar
+    AppCard
   },
   props: {
     title: {

@@ -4,16 +4,16 @@
       <nuxt />
     </v-content>
 
-    <Footer />
+    <app-footer />
   </v-app>
 </template>
 
 <script>
-import Footer from '~/components/ui/Footer'
+import AppFooter from '~/components/ui/AppFooter'
 
 export default {
   components: {
-    Footer
+    AppFooter
   }
 }
 </script>

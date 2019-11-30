@@ -33,8 +33,11 @@ export default {
   },
   methods: {
     logout () {
+      this.$router.push('/login')
+
+      this.$store.dispatch('entities/deleteAll')
+
       this.$auth.logout()
-        .then(() => this.$store.dispatch('entities/deleteAll'))
     }
   }
 }

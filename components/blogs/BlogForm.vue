@@ -1,5 +1,5 @@
 <template>
-  <FormCard
+  <app-form
     :title="`${prefix} Blog`"
     :submit="submit"
     :loading="loading"
@@ -25,22 +25,22 @@
       label="Cover Image"
     />
 
-    <TextEditor
+    <app-text-editor
       :errorMessages="form.errors.about"
       @input="form.errors.about = []"
       v-model="form.data.about"
     />
-  </FormCard>
+  </app-form>
 </template>
 
 <script>
-import TextEditor from '~/components/ui/forms/TextEditor'
-import BaseForm from '~/components/ui/forms/BaseForm'
+import AppTextEditor from '~/components/ui/forms/AppTextEditor'
+import BaseForm from '~/components/base/BaseForm'
 import Blog from '~/models/Post'
 
 export default {
   components: {
-    TextEditor
+    AppTextEditor
   },
   extends: BaseForm,
   props: {

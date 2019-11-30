@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <NavDraw :drawer="drawer" />
+    <app-nav-draw :drawer="drawer" />
 
     <v-app-bar app clipped-left fixed>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -9,7 +9,7 @@
 
       <div class="flex-grow-1" />
 
-      <Avatar />
+      <app-avatar />
     </v-app-bar>
 
     <v-content>
@@ -22,20 +22,20 @@
       </v-container>
     </v-content>
 
-    <Footer />
+    <app-footer />
   </v-app>
 </template>
 
 <script>
-import Avatar from '~/components/ui/Avatar'
-import NavDraw from '~/components/ui/NavDraw'
-import Footer from '~/components/ui/Footer'
+import AppAvatar from '~/components/ui/AppAvatar'
+import AppNavDraw from '~/components/ui/AppNavDraw'
+import AppFooter from '~/components/ui/AppFooter'
 
 export default {
   components: {
-    Avatar,
-    NavDraw,
-    Footer
+    AppAvatar,
+    AppNavDraw,
+    AppFooter
   },
   data () {
     return {

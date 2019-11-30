@@ -1,5 +1,5 @@
 <template>
-  <FormCard
+  <app-form
     :title="'Login'"
     :submit="submit"
     :loading="loading"
@@ -22,21 +22,21 @@
       type="password"
     />
     <template v-slot:actions>
-      <v-btn :loading="loading" v-on:click.prevent="submit" color="primary" type="submit">
+      <v-btn :loading="loading" color="primary" tile type="submit">
         Login
       </v-btn>
 
       <v-spacer />
 
-      <v-btn :disabled="loading" :to="'/register'" color="primary">
+      <v-btn :disabled="loading" :to="'/register'" tile color="primary">
         Register
       </v-btn>
     </template>
-  </FormCard>
+  </app-form>
 </template>
 
 <script>
-import BaseForm from '~/components/ui/forms/BaseForm'
+import BaseForm from '~/components/base/BaseForm'
 
 export default {
   extends: BaseForm,
