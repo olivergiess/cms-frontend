@@ -46,6 +46,7 @@ export default {
   axios: {
     https: true,
     host: 'cms.olivergiess.com',
+    port: 443,
     prefix: '/api/'
   },
   auth: {
