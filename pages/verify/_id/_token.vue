@@ -46,7 +46,7 @@ export default {
     const id = this.$route.params.id
     const token = this.$route.params.token
 
-    this.$axios.put(`/users/${id}/verify`, { token })
+    this.$axios.put(`/users/${id}/verification`, { token })
       .catch(() => { this.error = true })
       .finally(() => { this.loading = false })
   }
