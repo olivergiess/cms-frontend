@@ -1,15 +1,7 @@
 <template>
-  <v-container
-    fill-height
-  >
-    <v-row
-      align="start"
-      justify="center"
-    >
-      <v-col
-        cols="12"
-        md="5"
-      >
+  <v-container fill-height>
+    <v-row align="start" justify="center">
+      <v-col cols="12" md="5" xl="4">
         <RegisterForm />
       </v-col>
     </v-row>

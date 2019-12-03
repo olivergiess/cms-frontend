@@ -21,15 +21,12 @@
       label="Password"
       type="password"
     />
+
+    No account? <nuxt-link to="/register">Create one</nuxt-link>
     <template v-slot:actions>
+
       <v-btn :loading="loading" color="primary" tile type="submit">
         Login
-      </v-btn>
-
-      <v-spacer />
-
-      <v-btn :disabled="loading" :to="'/register'" tile color="primary">
-        Register
       </v-btn>
     </template>
   </app-form>

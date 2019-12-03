@@ -11,7 +11,7 @@
         <slot />
       </v-card-text>
 
-      <v-card-actions>
+      <v-card-actions class="pt-0 px-4 pb-4">
         <slot name="actions">
           <v-btn :loading="loading" color="primary" tile type="submit">
             Submit
