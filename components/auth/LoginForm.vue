@@ -22,9 +22,10 @@
       type="password"
     />
 
-    No account? <nuxt-link to="/register">Create one</nuxt-link>
+    No account? <nuxt-link to="/register">
+      Create one
+    </nuxt-link>
     <template v-slot:actions>
-
       <v-btn :loading="loading" color="primary" tile type="submit">
         Login
       </v-btn>
