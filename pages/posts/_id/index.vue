@@ -1,6 +1,6 @@
-<index.vue>
+<template>
   <EditPostForm :post="post" />
-</index.vue>
+</template>
 
 <script>
 import EditPostForm from '~/components/posts/EditPostForm'
