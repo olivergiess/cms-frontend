@@ -16,6 +16,12 @@ import AppLoadingBar from '~/components/ui/AppLoadingBar'
 export default {
   components: {
     AppLoadingBar
+  },
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    }
   }
 }
 </script>
