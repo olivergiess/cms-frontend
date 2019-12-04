@@ -32,12 +32,12 @@ export default {
     }
   },
   methods: {
-    logout () {
-      this.$router.push('/login')
+    async logout () {
+      await this.$auth.logout()
 
       this.$store.dispatch('entities/deleteAll')
 
-      this.$auth.logout()
+      this.$router.push('/login')
     }
   }
 }
