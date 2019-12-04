@@ -43,10 +43,9 @@ export default {
     }
   },
   created () {
-    const id = this.$route.params.id
-    const token = this.$route.params.token
+    const { email, expiry, token } = this.$route.params
 
-    this.$axios.put(`/users/${id}/verification`, { token })
+    this.$axios.put(`/auth/verification/`, { email, expiry, token })
       .catch(() => { this.error = true })
       .finally(() => { this.loading = false })
   }
