@@ -21,10 +21,17 @@
       label="Password"
       type="password"
     />
-
-    No account? <nuxt-link to="/register">
-      Create one
-    </nuxt-link>
+    <div>
+      <nuxt-link to="/reset-password">
+        Forgotten Password
+      </nuxt-link>
+    </div>
+    <div>
+      No Account?
+      <nuxt-link to="/register">
+        Create
+      </nuxt-link>
+    </div>
     <template v-slot:actions>
       <v-btn :loading="loading" color="primary" tile type="submit">
         Login
