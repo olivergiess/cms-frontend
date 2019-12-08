@@ -26,13 +26,13 @@ export default class User extends Model {
   static apiConfig = {
     actions: {
       showCurrent () {
-        return this.get(`user/current?expand=blogs.posts`)
+        return this.get(`users/current?expand=blogs.posts`)
       },
       updateCurrent (data) {
-        return this.put('user/current', data)
+        return this.put(`users/current`, data)
       },
       updatePasswordCurrent (data) {
-        return this.put('user/current/password', data)
+        return this.put(`users/current/password`, data)
       },
       create (data) {
         return this.post(`users`, data)
