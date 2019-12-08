@@ -10,7 +10,7 @@
       :item-text="'name'"
       :disabled="loading"
       :error-messages="form.errors.blog_id"
-      @input="form.errors.blog_id = ''"
+      @input="form.errors.blog_id = []"
       v-model="form.data.blog_id"
       label="Blog"
     />
@@ -18,7 +18,7 @@
     <v-text-field
       :disabled="loading"
       :error-messages="form.errors.title"
-      @input="form.errors.title = ''"
+      @input="form.errors.title = []"
       v-model="form.data.title"
       label="Title"
     />
@@ -26,7 +26,7 @@
     <v-text-field
       :disabled="loading"
       :error-messages="form.errors.cover_image"
-      @input="form.errors.cover_image = ''"
+      @input="form.errors.cover_image = []"
       v-model="form.data.cover_image"
       label="Cover Image"
     />
@@ -114,7 +114,7 @@ export default {
   methods: {
     publish_at_change () {
       this.form.field.publish_at.date_menu = false
-      this.form.errors.publish_at = ''
+      this.form.errors.publish_at = []
     }
   }
 }

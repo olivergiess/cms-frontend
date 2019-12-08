@@ -29,7 +29,7 @@ export default class User extends Model {
         return this.get(`user/current?expand=blogs.posts`)
       },
       create (data) {
-        return this.post(`/users`, data)
+        return this.post(`users`, data)
       }
     }
   }

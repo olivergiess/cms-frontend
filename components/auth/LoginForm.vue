@@ -7,19 +7,17 @@
     <v-text-field
       :disabled="loading"
       :error-messages="form.errors.email"
-      @input="form.errors.email = ''"
+      @input="form.errors.email = []"
       v-model="form.data.email"
       label="Email"
       type="email"
     />
 
-    <v-text-field
+    <app-password-input
       :disabled="loading"
       :error-messages="form.errors.password"
-      @input="form.errors.password = ''"
+      @input="form.errors.password = []"
       v-model="form.data.password"
-      label="Password"
-      type="password"
     />
     <div>
       <nuxt-link to="/reset-password">
@@ -41,9 +39,13 @@
 </template>
 
 <script>
+import AppPasswordInput from '~/components/ui/forms/AppPasswordInput'
 import BaseForm from '~/components/base/BaseForm'
 
 export default {
+  components: {
+    AppPasswordInput
+  },
   extends: BaseForm,
   data: () => ({
     form: {
@@ -52,8 +54,8 @@ export default {
         password: ''
       },
       errors: {
-        email: '',
-        password: ''
+        email: [],
+        password: []
       }
     }
   }),

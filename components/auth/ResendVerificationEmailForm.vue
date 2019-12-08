@@ -7,7 +7,7 @@
     <v-text-field
       :disabled="loading"
       :error-messages="form.errors.email"
-      @input="form.errors.email = ''"
+      @input="form.errors.email = []"
       v-model="form.data.email"
       label="Email"
       type="email"
@@ -27,7 +27,7 @@ export default {
         email: ''
       },
       errors: {
-        email: ''
+        email: []
       }
     }
   }),

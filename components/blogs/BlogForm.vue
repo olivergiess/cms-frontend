@@ -6,21 +6,21 @@
   >
     <v-text-field
       :error-messages="form.errors.url_identifier"
-      @input="form.errors.url_identifier = ''"
+      @input="form.errors.url_identifier = []"
       v-model="form.data.url_identifier"
       label="URL Identifier"
     />
 
     <v-text-field
       :error-messages="form.errors.name"
-      @input="form.errors.name = ''"
+      @input="form.errors.name = []"
       v-model="form.data.name"
       label="Name"
     />
 
     <v-text-field
       :error-messages="form.errors.cover_image"
-      @input="form.errors.cover_image = ''"
+      @input="form.errors.cover_image = []"
       v-model="form.data.cover_image"
       label="Cover Image"
     />

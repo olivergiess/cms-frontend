@@ -7,7 +7,10 @@
             {{ getError(error.statusCode).title }}
           </v-card-title>
           <v-card-text>
-            {{ getError(error.statusCode).message }} Return <nuxt-link to="/">home</nuxt-link>.
+            {{ getError(error.statusCode).message }} Return
+            <nuxt-link to="/">
+              home
+            </nuxt-link>.
           </v-card-text>
         </v-card>
       </v-col>
