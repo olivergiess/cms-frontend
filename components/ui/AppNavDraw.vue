@@ -33,6 +33,11 @@ export default {
           to: '/'
         },
         {
+          icon: 'mdi-account',
+          title: 'Account',
+          to: '/account'
+        },
+        {
           icon: 'mdi-newspaper-variant-multiple',
           title: 'Blogs',
           to: '/blogs'
