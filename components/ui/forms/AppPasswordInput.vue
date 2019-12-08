@@ -3,7 +3,7 @@
     :disabled="disabled"
     :error-messages="errorMessages"
     @input="handleInput"
-    v-model="value"
+    :value="value"
     :label="label"
     :type="show ? 'text' : 'password'"
     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
@@ -37,9 +37,14 @@ export default {
       show: false
     }
   },
+  computed: {
+    temp () {
+      return this.value
+    }
+  },
   methods: {
     handleInput (e) {
-      this.$emit('input', this.value)
+      this.$emit('input', e)
     }
   }
 }
