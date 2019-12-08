@@ -28,6 +28,12 @@ export default class User extends Model {
       showCurrent () {
         return this.get(`user/current?expand=blogs.posts`)
       },
+      updateCurrent (data) {
+        return this.put('user/current', data)
+      },
+      updatePasswordCurrent (data) {
+        return this.put('user/current/password', data)
+      },
       create (data) {
         return this.post(`users`, data)
       }
