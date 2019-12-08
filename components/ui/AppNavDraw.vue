@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" app clipped fixed>
+  <v-navigation-drawer :value="value" @input="handleInput" app clipped fixed>
     <v-list>
       <v-list-item
         :key="i"
@@ -22,7 +22,10 @@
 <script>
 export default {
   props: {
-    drawer: Boolean
+    value: {
+      type: Boolean,
+      default: false
+    }
   },
   data () {
     return {
@@ -48,6 +51,11 @@ export default {
           to: '/posts'
         }
       ]
+    }
+  },
+  methods: {
+    handleInput (e) {
+      this.$emit('input', e)
     }
   }
 }

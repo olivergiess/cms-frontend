@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <app-nav-draw :drawer="drawer" />
+    <app-nav-draw v-model="drawer" />
 
     <v-app-bar app clipped-left fixed>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
