@@ -4,12 +4,11 @@
       <v-toolbar-title>Welcome, {{ user.first_name }}</v-toolbar-title>
     </template>
 
-    <v-card-text>
-      Welcome to your Blog, from here you can administer and monitor how it is performing!
+    <v-card-text class="grey--text text--darken-3">
+      Welcome to Oliver Giess CMS (Content Management System), from here you can administer your Blogs and Posts!
 
-      To begin you can find an array of useful links in the side bar, this menu can be hidden or revealed by
-      clicking
-      the three bars in the top right.
+      To begin you start be creating a Blog and following up with your first post, you'll find the links you need by
+      clicking the three bars in the top right.
     </v-card-text>
   </app-card>
 </template>
