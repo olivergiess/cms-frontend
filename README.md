@@ -1,6 +1,6 @@
-# blog-frontend
+# cms-frontend
 
-> My praiseworthy Nuxt.js project
+> CMS Frontend for managing olivergiess/cms-backend.
 
 ## Build Setup
 

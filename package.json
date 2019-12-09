@@ -1,5 +1,5 @@
 {
-  "name": "blog-admin",
+  "name": "cms-frontend",
   "version": "1.0.0",
   "description": "SPA to facilitate management of Blog Posts with olivergiess/cms-backend.",
   "author": "Oliver Giess",
