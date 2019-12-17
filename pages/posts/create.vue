@@ -4,7 +4,7 @@
 
 <script>
 import CreatePostForm from '~/components/posts/CreatePostForm'
-import Blog from '~/models/Blog'
+import Blog from '~/scripts/models/Blog'
 
 export default {
   layout: 'admin',

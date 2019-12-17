@@ -24,7 +24,7 @@
 
 <script>
 import AppCard from '~/components/ui/AppCard'
-import Post from '~/models/Post'
+import Post from '~/scripts/models/Post'
 
 export default {
   layout: 'admin',

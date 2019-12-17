@@ -1,4 +1,4 @@
-import User from '~/models/User'
+import User from '~/scripts/models/User'
 
 const DEFAULTS = {
   tokenName: 'Authorization',

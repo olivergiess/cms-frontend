@@ -67,8 +67,8 @@
 <script>
 import AppTextEditor from '~/components/ui/forms/AppTextEditor'
 import BaseForm from '~/components/base/BaseForm'
-import Post from '~/models/Post'
-import Blog from '~/models/Blog'
+import Post from '~/scripts/models/Post'
+import Blog from '~/scripts/models/Blog'
 
 export default {
   components: {

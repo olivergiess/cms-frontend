@@ -43,7 +43,7 @@
 <script>
 import AppPasswordInput from '~/components/ui/forms/AppPasswordInput'
 import BaseForm from '~/components/base/BaseForm'
-import User from '~/models/User'
+import User from '~/scripts/models/User'
 
 export default {
   components: {

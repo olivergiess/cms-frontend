@@ -1,6 +1,6 @@
 <script>
 import PostForm from '~/components/posts/PostForm'
-import Post from '~/models/Post'
+import Post from '~/scripts/models/Post'
 
 export default {
   extends: PostForm,

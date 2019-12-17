@@ -4,7 +4,7 @@
 
 <script>
 import EditBlogForm from '~/components/blogs/EditBlogForm'
-import Blog from '~/models/Blog'
+import Blog from '~/scripts/models/Blog'
 
 export default {
   layout: 'admin',

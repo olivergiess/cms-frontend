@@ -1,6 +1,6 @@
 <script>
 import BlogForm from '~/components/blogs/BlogForm'
-import Blog from '~/models/Blog'
+import Blog from '~/scripts/models/Blog'
 
 export default {
   extends: BlogForm,

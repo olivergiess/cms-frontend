@@ -2,11 +2,11 @@
 import Vuex from 'vuex'
 import VuexORM from '@vuex-orm/core'
 import VuexORMAxios from '@vuex-orm/plugin-axios'
-import { JsonAPIConverter } from '~/helpers/JsonAPIConverter'
+import { JsonAPIConverter } from '~/scripts/helpers/JsonAPIConverter'
 
-import User from '~/models/User'
-import Blog from '~/models/Blog'
-import Post from '~/models/Post'
+import User from '~/scripts/models/User'
+import Blog from '~/scripts/models/Blog'
+import Post from '~/scripts/models/Post'
 
 VuexORM.use(VuexORMAxios, {
   dataTransformer: (response) => {

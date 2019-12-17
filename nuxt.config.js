@@ -29,7 +29,6 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/tip-tap-vuetify.js',
     '~/plugins/vuex-orm-plugin-axios.js'
   ],
   /*
@@ -59,7 +58,7 @@ export default {
     },
     strategies: {
       local: {
-        _scheme: '~/app/customScheme.js',
+        _scheme: '~/scripts/customScheme.js',
         endpoints: {
           login: { url: 'auth/login', method: 'post', propertyName: 'data' },
           logout: { url: 'auth/logout', method: 'post' },

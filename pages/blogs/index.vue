@@ -24,7 +24,7 @@
 
 <script>
 import AppCard from '~/components/ui/AppCard'
-import Blog from '~/models/Blog'
+import Blog from '~/scripts/models/Blog'
 
 export default {
   layout: 'admin',

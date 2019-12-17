@@ -4,7 +4,7 @@
 
 <script>
 import EditPostForm from '~/components/posts/EditPostForm'
-import Post from '~/models/Post'
+import Post from '~/scripts/models/Post'
 
 export default {
   layout: 'admin',
