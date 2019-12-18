@@ -12,7 +12,7 @@ export default class Post extends Model {
       id: this.increment(),
       title: this.string(''),
       cover_image: this.string(''),
-      body: this.string(''),
+      body: this.string(null),
       publish_at: this.string(''),
       updated_at: this.string(''),
       blog_id: this.number(null),

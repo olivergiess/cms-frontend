@@ -7,8 +7,8 @@
 
       <div class="flex-grow-1" />
 
-      <v-btn @click.prevent="create" color="primary lighten-1" fab small>
-        <v-icon>mdi-plus</v-icon>
+      <v-btn @click.prevent="create" class="white--text" outlined>
+        Add
       </v-btn>
     </template>
 
