@@ -13,7 +13,7 @@ export default class Blog extends Model {
       url_identifier: this.string(''),
       name: this.string(''),
       cover_image: this.string(''),
-      about: this.string(''),
+      about: this.string(null),
       created_at: this.string(''),
       updated_at: this.string(''),
       user: this.belongsTo(User, 'user_id'),

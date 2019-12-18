@@ -7,7 +7,7 @@
 
       <div class="flex-grow-1" />
 
-      <v-btn @click.prevent="create" class="white--text" outlined>
+      <v-btn @click.prevent="create" class="white--text" tile outlined>
         Add
       </v-btn>
     </template>
