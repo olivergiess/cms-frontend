@@ -12,6 +12,8 @@ export default class User extends Model {
       first_name: this.string(''),
       last_name: this.string(''),
       email: this.string(''),
+      facebook_user_id: this.string('', val => val === 'null' ? '' : val),
+      instagram_handle: this.string('', val => val === 'null' ? '' : val),
       blogs: this.hasMany(Blog, 'user_id')
     }
   }

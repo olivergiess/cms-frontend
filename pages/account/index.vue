@@ -2,7 +2,7 @@
   <div>
     <v-row pt-0>
       <v-col>
-        <personal-details-form :user="user" />
+        <user-details-form :user="user" />
       </v-col>
     </v-row>
     <v-row>
@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import PersonalDetailsForm from '~/components/user/PersonalDetailsForm'
+import UserDetailsForm from '~/components/user/UserDetailsForm'
 import UpdatePasswordForm from '~/components/user/UpdatePasswordForm'
 
 export default {
   layout: 'admin',
   components: {
-    PersonalDetailsForm,
+    UserDetailsForm,
     UpdatePasswordForm
   },
   computed: {
